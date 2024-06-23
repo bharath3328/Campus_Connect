@@ -12,7 +12,8 @@ const ans_schema=schema({
     },
     user_id:{
         type:schema.Types.ObjectId,
-        ref:"questions"
+        ref:"questions",
+        require
     }
 
 },{
