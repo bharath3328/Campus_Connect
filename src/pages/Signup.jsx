@@ -15,6 +15,7 @@ export function Signup() {
   const [usn,setUsn]=useState('');
   const [role,setRole]=useState('');
   const [username,setUsername]=useState('');
+  const [sem,setSem]=useState();
 
   const signupHandler=async()=>{
     const data={
@@ -23,6 +24,7 @@ export function Signup() {
       usn:usn,
       role:role,
       username:username,
+      sem:sem,
     }
     console.log(data);
     // try {
@@ -44,12 +46,13 @@ export function Signup() {
         </Typography>
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
-        <Input label="Email" size="lg" onChange={(e)=>setEmail(e.target.value)}/>
-        <Input label="Password" size="lg" onChange={(e)=>setPassword(e.target.value)}/>
-        <Input label="Username" size="lg" onChange={(e)=>setUsername(e.target.value)}/>
-        <Input label="USN" size="lg" onChange={(e)=>setUsn(e.target.value)}/>
+        <Input required label="Email" size="lg" onChange={(e)=>setEmail(e.target.value)}/>
+        <Input required label="Password" size="lg" onChange={(e)=>setPassword(e.target.value)}/>
+        <Input required label="Username" size="lg" onChange={(e)=>setUsername(e.target.value)}/>
+        <Input required label="USN" size="lg" onChange={(e)=>setUsn(e.target.value)}/>
+        <Input required type='number' min='1' max='8' label="Semester" size="lg" onChange={(e)=>setSem(e.target.value)}/>
         <div className="w-24 border border-gray-500 rounded-md">
-          <select name="who are you ?" onChange={(e)=>setRole(e.target.value)}>
+          <select required name="who are you ?" onChange={(e)=>setRole(e.target.value)}>
             <option value="student">Student</option>
             <option value="alumini">Alumini</option>
           </select>

@@ -27,7 +27,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button>Notes</Button>
+        <Button>Lecture Materials</Button>
       </Typography>
       <Typography
         as="li"

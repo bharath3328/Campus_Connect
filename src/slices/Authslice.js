@@ -1,5 +1,6 @@
 //working fine 
-
+//common axios is working 
+//use that 
 import { createSlice ,createAsyncThunk} from "@reduxjs/toolkit";
 // import axios from '../axios.jsx';
 

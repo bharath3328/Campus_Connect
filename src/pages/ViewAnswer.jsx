@@ -1,7 +1,9 @@
 export const ViewAnswer=()=>{
     return(
         <>
-        <h1>u can view the answer here</h1>
+        <div className="b"></div>
         </>
     )
 }
+//with the parameters u will get the answer for the question 
+//then  display it 

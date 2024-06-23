@@ -9,6 +9,9 @@ import {PostQuestion} from "./pages/postQuestion";
 import {Answer} from './pages/Answer';
 import { NavbarSimple } from "./components/navbar"
 import { ViewAnswer } from './pages/ViewAnswer';
+import {UploadNotes} from './pages/uploadNotes';
+import { Notes } from './pages/Notes';
+import { Blogs } from './pages/Blogs';
 function App() {
   return (
     <>
@@ -22,6 +25,9 @@ function App() {
       <Route path='/postQn' element={<PostQuestion/>}></Route>
       <Route path='/answer' element={<Answer/>}></Route>
       <Route path='/viewanswer' element={<ViewAnswer/>}></Route>
+      <Route path='/uploadnotes' element={<UploadNotes/>}></Route>
+      <Route path='/notes' element={<Notes/>}></Route>
+      <Route path='/blogs' element={<Blogs/>}></Route>
     </Routes>
     </Provider>
     </>

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Textarea } from "@material-tailwind/react";
 export const Answer = () => {
-    const [question, setQusetion] = useState('');
-    const [subject, setSubject] = useState('');
+    const [answer, setAnswer] = useState('');
+    const [image, setImage] = useState(null);
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        const questionData = {
-            question: question,
-            subject: subject,
+        const answerData = {
+            answer: answer,
+            image:image,
         }
-        console.log(questionData);
-        //post question in the db
+        console.log(answerData);
+        //post answer in the db
+        //working fine send it to the db to save
     };
 //with the form render the question as well 
 //in a seperate div 
@@ -25,18 +27,20 @@ export const Answer = () => {
                     Answer the question
                 </label>
                 <div className="w-96">
-                    <Textarea />
+                    <Textarea rows={10} cols={10} onChange={(e)=>setAnswer(e.target.value)}/>
                 </div>
             </div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload the answer image</label>
-            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"></input >
+            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 
+            focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+            id="file_input" type="file" accept="image/jpeg" onChange={(e)=>setImage(e.target.files[0])}></input >
 
             <div className="flex items-center justify-between">
                 <button
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
-                    Post
+                    Submit Answer
                 </button>
             </div>
         </form>
