@@ -6,6 +6,7 @@ export const UploadNotes=()=>{
     const [link,setLink]=useState('');
     const [type,setType]=useState('');
     //get default sem data from the user
+    //user who has uploaded it 
     const navigate=useNavigate();
     const sem=4;
     const handleSubmit=(e)=>{

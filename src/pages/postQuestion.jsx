@@ -1,10 +1,16 @@
-
+import { useDispatch} from 'react-redux';
 import React, { useState } from 'react';
-
+import { useNotifications } from '../slices/notifications';
+import {notify} from '../slices/notificationSlice'
 export const PostQuestion = () => {
   const [question, setQusetion] = useState('');
   const [subject, setSubject] = useState('');
   const [image, setImage] = useState(null);
+
+  //we have to use the function then only we can 
+  //able to display the notification message 
+  useNotifications();
+  const dispatch=useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     const questionData = {
@@ -13,6 +19,7 @@ export const PostQuestion = () => {
       image:image,
     }
     console.log(questionData);
+    dispatch(notify({message:'Question Posted Successfully',type:'success'}));
     //post question in the db
     //working fine post it with axios
   };
@@ -24,6 +31,7 @@ export const PostQuestion = () => {
           Whats your Question ?
         </label>
         <textarea
+          required
           type="text"
           rows={10}
           cols={10}
@@ -33,10 +41,11 @@ export const PostQuestion = () => {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="field2" className="block text-gray-700 text-sm font-bold mb-2">
+        <label   htmlFor="field2" className="block text-gray-700 text-sm font-bold mb-2">
           Subject
         </label>
         <input
+        required
           type="text"
           name="field2"
           id="field2"

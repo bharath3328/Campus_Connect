@@ -13,9 +13,9 @@ export const Notes=()=>{
     }
     return(
         <>
-        <div className="w-48 h-32 bg-gray-300 rounded drop-shadow-md" onClick={()=>handleClick()}>
+        <div className="w-48 h-32 bg-gray-300 rounded drop-shadow-md text-center m-3 p-4 " >
             <h4>{data.subject}</h4>
-            <h4>{data.chapter}</h4>
+            <h4 onClick={()=>handleClick()} className="hover:underline">{data.chapter}</h4>
             <h4>{data.type}</h4>
         </div>
         </>

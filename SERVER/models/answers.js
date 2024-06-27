@@ -15,7 +15,7 @@ const ans_schema=schema({
         ref:"questions",
         require
     }
-
+    
 },{
     timestamp:true
 })
