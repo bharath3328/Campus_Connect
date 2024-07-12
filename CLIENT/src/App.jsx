@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes ,useLocation} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { Home } from './pages/Home';
@@ -16,10 +16,12 @@ import { UploadBlog } from './pages/UploadBlog';
 import { Footer } from './components/footer';
 import { ViewSubject } from './pages/viewSubjects';
 function App() {
+  const location = useLocation();
+  const hideNavbarAndFooter = location.pathname === '/home';
   return (
     <>
       <Provider store={store}>
-        <NavbarSimple />
+      {!hideNavbarAndFooter && <NavbarSimple />}
         <Routes>
           <Route path='/home' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
@@ -34,7 +36,7 @@ function App() {
           <Route path='/uploadblogs' element={<UploadBlog />}></Route>
           <Route path='/viewsubjects' element={<ViewSubject />}></Route>
         </Routes>
-        <Footer />
+        {!hideNavbarAndFooter && <Footer />}
       </Provider>
     </>
   )

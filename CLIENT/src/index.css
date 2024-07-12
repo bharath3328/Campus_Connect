@@ -7,3 +7,8 @@ body
 {
     font-family: "Poppins", sans-serif;
 }
+@layer utilities {
+    .animate-typing {
+      animation: typing 7s steps(40, end) infinite, blink 0.75s step-end infinite;
+    }
+  }

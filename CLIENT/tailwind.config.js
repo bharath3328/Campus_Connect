@@ -7,15 +7,17 @@ module.exports = withMT({
     extend: {
       keyframes: {
         typing: {
-          '0%': { width: '0%' },
-          '100%': { width: '100%' },
+          '0%, 20%': { width: '0%' },
+          '40%, 60%': { width: '100%' },
+          '80%, 100%': { width: '0%' },
         },
         blink: {
-          '50%': { 'border-color': 'transparent' },
+          '0%, 100%': { 'border-color': 'transparent' },
+          '50%': { 'border-color': 'white' },
         },
       },
       animation: {
-        typing: 'typing 2s steps(40, end) forwards, blink 0.75s step-end infinite',
+        typing: 'typing 4s steps(40, end) infinite, blink 0.75s step-end infinite',
       },
     },
   },
