@@ -24,7 +24,7 @@ export function Blog() {
                 />
             </CardHeader>
             <CardBody>
-                <div className="flex items-center justify gap-2">
+                <div className="md:flex-row md:items-center md:justify md:gap-3 flex-col gap-3">
                     <Avatar
                         size="lg"
                         variant="circular"

@@ -1,47 +1,49 @@
 import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Input,
-    Button,
-  } from "@material-tailwind/react";
-  import { useState } from "react";
-  import { useDispatch, useSelector } from 'react-redux';
-  import {loginUser} from '../slices/Authslice';
-  export function Login() {
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-
-    const dispatch=useDispatch();
-    const loginHandler=()=>{
-      const data={
-        email:email,
-        password:password,
-      }
-      // console.log(data);
-      dispatch(loginUser(data));
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Input,
+  Button,
+} from "@material-tailwind/react";
+import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../slices/Authslice';
+import { useNavigate } from "react-router-dom";
+export function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loginHandler = () => {
+    const data = {
+      email: email,
+      password: password,
     }
+    // console.log(data);
+    dispatch(loginUser(data));
+  }
 
-    return (
+  return (
+    <div className="flex items-center justify-center mt-40">
       <Card className="w-96">
         <CardHeader
           variant="gradient"
-          color="gray"
+          color="cyan"
           className="mb-4 grid h-28 place-items-center"
         >
           <Typography variant="h3" color="white">
-            Sign In
+            Login
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
-          <Input label="Email" size="lg" onChange={(e)=>setEmail(e.target.value)}/>
-          <Input label="Password" size="lg" onChange={(e)=>setPassword(e.target.value)}/>
+          <Input label="Email" size="lg" onChange={(e) => setEmail(e.target.value)} />
+          <Input label="Password" size="lg" onChange={(e) => setPassword(e.target.value)} />
         </CardBody>
         <CardFooter className="pt-0">
-          <Button variant="gradient" fullWidth onClick={()=>loginHandler()}>
-            Sign In
+          <Button color="cyan" variant="gradient" fullWidth onClick={() => loginHandler()}>
+            login
           </Button>
           <Typography variant="small" className="mt-6 flex justify-center">
             Don&apos;t have an account?
@@ -49,13 +51,15 @@ import {
               as="a"
               href="#signup"
               variant="small"
-              color="blue-gray"
+              color="cyan"
               className="ml-1 font-bold"
+              onClick={() => navigate('/signup')}
             >
               Sign up
             </Typography>
           </Typography>
         </CardFooter>
       </Card>
-    );
-  }
+    </div>
+  );
+}

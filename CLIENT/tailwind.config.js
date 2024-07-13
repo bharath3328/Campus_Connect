@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const withMT = require("@material-tailwind/react/utils/withMT");
+const { colors } = require('@mui/material');
  
 module.exports = withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
@@ -18,6 +19,9 @@ module.exports = withMT({
       },
       animation: {
         typing: 'typing 4s steps(40, end) infinite, blink 0.75s step-end infinite',
+      },
+      colors:{
+        'custom-blue': 'rgb(13, 47, 102)'
       },
     },
   },

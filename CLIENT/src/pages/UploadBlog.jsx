@@ -22,7 +22,10 @@ export const UploadBlog = () => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-8 shadow-md rounded">
+            <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-8 shadow-md rounded my-10">
+                <div className="flex items-center justify-center ">
+                    <h1 className="block text-gray-700 text-xl font-bold mb-2">Write Your Blog</h1>
+                </div>
                 <div className="mb-4">
                     <label htmlFor="field1" className="block text-gray-700 text-sm font-bold mb-2">
                         Full Name:
@@ -74,8 +77,7 @@ export const UploadBlog = () => {
                 </div>
                 <div className="mb-4">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload your image (optional)</label>
-            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 
-            focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             id="file_input" type="file" accept="image/jpeg" onChange={(e)=>setImage(e.target.files[0])}></input >
                 </div>
                 <div className="mb-4">

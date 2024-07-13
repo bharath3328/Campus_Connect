@@ -8,6 +8,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import {axiosApi} from '../axios.jsx';
 export function Signup() {
   const [email,setEmail]=useState('');
@@ -16,7 +17,7 @@ export function Signup() {
   const [role,setRole]=useState('');
   const [username,setUsername]=useState('');
   const [sem,setSem]=useState();
-
+  const navigate=useNavigate();
   const signupHandler=async()=>{
     const data={
       email:email,
@@ -35,10 +36,11 @@ export function Signup() {
     // }
   }
   return (
+    <div className="flex items-center justify-center mt-40">
     <Card className="w-96">
       <CardHeader
         variant="gradient"
-        color="gray"
+        color="cyan"
         className="mb-4 grid h-28 place-items-center"
       >
         <Typography variant="h3" color="white">
@@ -59,7 +61,7 @@ export function Signup() {
         </div>
       </CardBody>
       <CardFooter className="pt-0">
-        <Button variant="gradient" fullWidth onClick={()=>signupHandler()}>
+        <Button color="cyan" variant="gradient" fullWidth onClick={()=>signupHandler()}>
           Sign Up
         </Button>
         <Typography variant="small" className="mt-6 flex justify-center">
@@ -68,13 +70,15 @@ export function Signup() {
             as="a"
             href="#signup"
             variant="small"
-            color="blue-gray"
+            color="cyan"
             className="ml-1 font-bold"
+            onClick={()=>navigate('/login')}
           >
             Sign in
           </Typography>
         </Typography>
       </CardFooter>
     </Card>
+    </div>
   );
 }
