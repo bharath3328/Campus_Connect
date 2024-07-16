@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../logo/campusconnect-logo2.png';
+import logo from '../logo/campusconnectlogo3.png';
 import {useNavigate} from "react-router-dom";
 const features = [
   {
@@ -42,10 +42,10 @@ export const Home = () => {
           Linking Students, Alumni, and Industry
         </p>
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
-          <button onClick={()=>navigate('/signup')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-blue-600 hover:text-white">
+          <button onClick={()=>navigate('/signup')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
             Signup
           </button>
-          <button onClick={()=>navigate('/login')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-blue-600 hover:text-white">
+          <button onClick={()=>navigate('/login')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
             Login
           </button>
         </div>
