@@ -21,7 +21,6 @@ export function Login() {
       email: email,
       password: password,
     }
-    // console.log(data);
     dispatch(loginUser(data));
   }
 
@@ -30,8 +29,7 @@ export function Login() {
       <Card className="w-96">
         <CardHeader
           variant="gradient"
-          color="cyan"
-          className="mb-4 grid h-28 place-items-center"
+          className="mb-4 grid h-28 place-items-center bg-custom-blue"
         >
           <Typography variant="h3" color="white">
             Login
@@ -42,7 +40,7 @@ export function Login() {
           <Input label="Password" size="lg" onChange={(e) => setPassword(e.target.value)} />
         </CardBody>
         <CardFooter className="pt-0">
-          <Button color="cyan" variant="gradient" fullWidth onClick={() => loginHandler()}>
+          <Button className="bg-custom-blue"  fullWidth onClick={() => loginHandler()}>
             login
           </Button>
           <Typography variant="small" className="mt-6 flex justify-center">
@@ -51,8 +49,7 @@ export function Login() {
               as="a"
               href="#signup"
               variant="small"
-              color="cyan"
-              className="ml-1 font-bold"
+              className="ml-1 font-bold text-custom-blue"
               onClick={() => navigate('/signup')}
             >
               Sign up

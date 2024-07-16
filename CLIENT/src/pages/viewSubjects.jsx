@@ -23,3 +23,8 @@ export const ViewSubject=()=>{
         </>
     )
 }
+
+//get the sem details from the backend 
+//then display the subjects 
+// pass prop to the view notes 
+// display the notes which matches the subject 

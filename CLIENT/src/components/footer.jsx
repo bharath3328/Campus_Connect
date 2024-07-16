@@ -1,5 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-import logo from "../logo/campusconnect-logo2.png";
+import logo from "../logo/campusconnectlogo.png"
 import { useNavigate } from "react-router-dom";
 export function Footer() {
   const navigate=useNavigate();

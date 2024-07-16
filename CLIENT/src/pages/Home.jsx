@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../logo/campusconnectlogo3.png';
+import logo from '../logo/campusconnectlogo.png';
 import {useNavigate} from "react-router-dom";
 const features = [
   {

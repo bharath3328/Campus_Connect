@@ -59,3 +59,9 @@ export const Answer = () => {
 };
 
 //put the verify button for teachers 
+
+
+//send question id as the prop to display the question 
+//on submit - along with user id post 
+//redirect to view answer with  the answer which is posted
+//enable edit options 

@@ -44,7 +44,7 @@ function App() {
           </CSSTransition>
         </TransitionGroup>
         {!shouldHideHeaderFooter && <Footer />}
-      </Provider> 
+      </Provider>  
     </>
   )
 }

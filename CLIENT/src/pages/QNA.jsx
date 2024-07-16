@@ -19,5 +19,6 @@ export const QNA = () => {
         </>
     )
 }
-//after comnnecting the backend we can map the questions
+//after comnnecting the backend we can map the questions based on todays date 
 //filter it according to the date of the question 
+//useeffect will bring all the questions  

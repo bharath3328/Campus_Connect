@@ -71,3 +71,8 @@ export const PostQuestion = () => {
   );
 };
 
+//send user-id as the prop 
+//on click submit 
+//post request 
+//after response -notification 
+//redirect to qna page
