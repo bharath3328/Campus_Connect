@@ -2,7 +2,7 @@ const answer=require('../models/answers.js')
 const express=require('express')
 const routes=express.Router()
 const question=require('../models/questions.js')
-const user = require('../models/userInfo.js')
+const user = require('../models/userModel.js')
 routes.post('/new',async(req,res)=>{
     
       

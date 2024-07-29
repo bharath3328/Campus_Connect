@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 const schema=mongoose.Schema
 const questions=require("./questions.js")
-const userInfo=require("./userInfo.js")
+const userInfo=require("./userModel.js")
 const imageschema=schema({
     filename:String,
     url:String
