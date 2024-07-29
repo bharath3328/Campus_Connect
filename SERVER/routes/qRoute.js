@@ -1,4 +1,5 @@
 const question=require('../models/questions')
+const user=require('../models/userModel')
 const express=require('express')
 const routes=express.Router();
 //index route

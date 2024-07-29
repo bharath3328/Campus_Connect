@@ -2,10 +2,9 @@ const express=require("express")
 const app=express()
 const cors=require("cors")
 const mongoose=require('mongoose')
-const user=require('./models/userModel.js')
 const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
-const qRoute=require('./routes/qRoute.js')
+const questionsRoute=require('./routes/qRoute.js')
 const ansroute=require('./routes/ansroute.js')
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -41,11 +40,13 @@ app.use(cors({ origin: ["http://localhost:5174"], credentials: true }));
 app.get('/',(req,res)=>{
     res.send('index route')
 })
-//questions route
-app.use('/questions',qRoute)
+//questions qoute
+app.use('/questions',questionsRoute)
+
 //answers route
 app.use('/answers',ansroute)
-// adduser()
+
+
 
 const userRoute = require('./routes/userRoute');
 app.use('/api/user', userRoute);
