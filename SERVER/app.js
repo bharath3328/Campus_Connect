@@ -5,7 +5,8 @@ const mongoose=require('mongoose')
 const user=require('./models/userInfo.js')
 const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
-const userRoute=require('./routes/qRoute.js')
+const qRoute=require('./routes/qRoute.js')
+const ansroute=require('./routes/ansroute.js')
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
@@ -26,21 +27,23 @@ app.use(cors({ origin: ["http://localhost:5174"], credentials: true }));
 
 
 
-adduser=async ()=>{
-    question.deleteMany({})
-    question.insertMany({
-        username:'hello bot',
-        Question:'what is a genai?',
+// adduser=async ()=>{
+//     question.deleteMany({})
+//     question.insertMany({
+//         username:'hello bot',
+//         Question:'what is a genai?',
         
 
-    })
-}
+//     })
+// }
 //index route
 app.get('/',(req,res)=>{
     res.send('index route')
 })
-//questions qoute
-app.use('/questions',userRoute)
+//questions route
+app.use('/questions',qRoute)
+//answers route
+app.use('/answers',ansroute)
 // adduser()
 app.listen(8085, () => {
     console.log(`listening on port 8085`);
