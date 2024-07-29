@@ -1,7 +1,7 @@
 const question=require('../models/questions')
 const user=require('../models/userInfo')
 const express=require('express')
-const routes=express.Router()
+const routes=express.Router();
 //index route
 routes.get('/',async (req,res)=>{
     result= await question.find()

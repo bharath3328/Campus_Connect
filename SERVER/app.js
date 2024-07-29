@@ -2,7 +2,7 @@ const express=require("express")
 const app=express()
 const cors=require("cors")
 const mongoose=require('mongoose')
-const user=require('./models/userInfo.js')
+const user=require('./models/userModel.js')
 const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
 const userRoute=require('./routes/qRoute.js')
@@ -22,6 +22,7 @@ main().then(() => {
 async function main() {
     await mongoose.connect(mongoUrl);
 }
+
 app.use(cors({ origin: ["http://localhost:5174"], credentials: true }));
 
 
@@ -42,6 +43,11 @@ app.get('/',(req,res)=>{
 //questions qoute
 app.use('/questions',userRoute)
 // adduser()
+
+const userRoute = require('./routes/userRoute');
+app.use('/api/user', userRoute);
+
+
 app.listen(8085, () => {
     console.log(`listening on port 8085`);
 });
