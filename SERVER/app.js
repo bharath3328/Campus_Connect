@@ -5,7 +5,7 @@ const mongoose=require('mongoose')
 const user=require('./models/userModel.js')
 const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
-const userRoute=require('./routes/qRoute.js')
+const questionsRoute=require('./routes/qRoute.js')
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
@@ -41,7 +41,7 @@ app.get('/',(req,res)=>{
     res.send('index route')
 })
 //questions qoute
-app.use('/questions',userRoute)
+app.use('/questions',questionsRoute)
 // adduser()
 
 const userRoute = require('./routes/userRoute');

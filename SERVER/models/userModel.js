@@ -2,7 +2,7 @@ const mongoose=require('mongoose')
 const schema=mongoose.Schema
 const bycrypt =require("bcrypt");
 const jwt=require('jsonwebtoken');
-const userchema=schema({
+const userSchema=schema({
     email:{
         type:String,
         require
@@ -50,6 +50,6 @@ userSchema.methods.generateAuth=async function(){
     }
 }
 
-const user=mongoose.model('user',userchema)
+const user=mongoose.model('user',userSchema)
 module.exports=user;
 
