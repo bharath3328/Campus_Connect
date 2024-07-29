@@ -1,6 +1,11 @@
 const mongoose=require("mongoose")
 const schema=mongoose.Schema
 const questions=require("./questions.js")
+const userInfo=require("./userInfo.js")
+const imageschema=schema({
+    filename:String,
+    url:String
+})
 const ans_schema=schema({
     isverified:{
         type:Boolean,
@@ -10,10 +15,17 @@ const ans_schema=schema({
         type:String,
         require
     },
+    image:{
+        type:imageschema
+    },
     user_id:{
         type:schema.Types.ObjectId,
-        ref:"questions",
-        require
+        ref:"userInfo",
+        
+    },
+    q_id:{
+        type:schema.Types.ObjectId,
+        ref:"questions"
     }
     
 },{

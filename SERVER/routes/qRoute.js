@@ -5,8 +5,8 @@ const routes=express.Router();
 //index route
 routes.get('/',async (req,res)=>{
     result= await question.find()
-    console.log('hello world')
-    res.send(result)
+   
+    res.status(200).send(result)
 })
 //new route add a new question
 routes.post('/postQn',async (req,res)=>{
@@ -19,13 +19,13 @@ routes.post('/postQn',async (req,res)=>{
             url:url
         }
     })
-    console.log('question added successfully')
+    res.status(200).send('Question added successfully')
 })
 // delete question
 routes.delete('/delete/:id',async (req,res)=>{
     let {id}=req.params
     await question.findByIdAndDelete(id)
-    console.log("deletion successful")
+    res.status(200).send('Question deleted successfully')
     
 })
 module.exports=routes
