@@ -41,3 +41,6 @@ export function Question() {
 //and after posting the answer rerender the page with the answer
 //in the question card replace answer button with the view answer and remove the verify button
 
+//get the question id as prop 
+//send this as param to the answer post answer and view answer
+//then display the answer

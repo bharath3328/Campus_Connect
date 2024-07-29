@@ -17,7 +17,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button>
+        <Button className="bg-custom-blue">
           QNA
         </Button>
       </Typography>
@@ -27,7 +27,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button>Lecture Materials</Button>
+        <Button className="bg-custom-blue">Lecture Materials</Button>
       </Typography>
       <Typography
         as="li"
@@ -35,7 +35,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button>Jobs</Button>
+        <Button className="bg-custom-blue">Jobs</Button>
       </Typography>
       <Typography
         as="li"
@@ -43,7 +43,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button>Placement Blogs </Button>
+        <Button className="bg-custom-blue">Placement Blogs </Button>
       </Typography>
     </ul>
   );
@@ -69,16 +69,16 @@ export function NavbarSimple() {
   }, []);
   const navigate = useNavigate();
   return (
-    <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
+    <Navbar className="mx-auto max-w-screen-xl px-6 py-3 mt-5">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
           variant="h6"
-          className="mr-4 cursor-pointer py-1.5"
+          className="mr-4 cursor-pointer py-1.5 text-custom-blue"
           onClick={() => navigate('/home')}
         >
-          College Connect
+          Campus Connect
         </Typography>
         <div className="hidden lg:block">
           {isLoggedIn == true &&

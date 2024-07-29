@@ -25,7 +25,7 @@ export const PostQuestion = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-8 shadow-md rounded">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-8 shadow-md rounded my-10">
       <div className="mb-4">
         <label htmlFor="field1" className="block text-gray-700 text-sm font-bold mb-2">
           Whats your Question ?
@@ -56,15 +56,13 @@ export const PostQuestion = () => {
       </div>
       <div>
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload the answer image</label>
-        <input class="block w-full text-sm text-gray-900 border border-gray-300 
-        rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
-         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"'
          id="file_input" type="file" accept="image/jpeg" onChange={(e)=>setImage(e.target.files[0])}></input >
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center">
         <button
         type='submit'
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="m-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Post
         </button>
@@ -73,3 +71,8 @@ export const PostQuestion = () => {
   );
 };
 
+//send user-id as the prop 
+//on click submit 
+//post request 
+//after response -notification 
+//redirect to qna page
