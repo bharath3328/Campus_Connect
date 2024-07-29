@@ -17,4 +17,15 @@ routes.post('/new',async(req,res)=>{
     res.status(200).send(newq)
     
 })
+//delete answer
+routes.delete('/delete',async (req,res)=>{
+    
+    let {q_id,ans_id}=req.body
+    // await question.findByIdAndUpdate(q_id,{
+    //     answer:
+    // })
+    await answer.findByIdAndDelete(ans_id)
+    res.status(200).send("deletion successful")
+
+})
 module.exports=routes
