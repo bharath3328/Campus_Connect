@@ -1,6 +1,10 @@
 const mongoose=require("mongoose")
 const schema=mongoose.Schema
 const ans_schema=require("./answers")
+const imageschema=schema({
+    filename:String,
+    url:String
+})
 const q_schema=schema({
     username:{
         type:String,
@@ -15,10 +19,17 @@ const q_schema=schema({
         ref:"answer",
         max:1
     },
+    subject:{
+        type:String,
+
+    },
+    image:{
+        type:imageschema
+    }
 },
     {
         timestamps:true,
     }
 )
-const q_model=mongoose.model('question',q_model)
-moduole.exports=q_model
+const q_model=mongoose.model('question',q_schema)
+module.exports=q_model
