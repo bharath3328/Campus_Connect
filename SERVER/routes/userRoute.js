@@ -4,8 +4,8 @@ const user = require('../models/userModel');
 const bycrypt = require("bcrypt");
 
 router.post('/signup', async (req, res) => {
-    const { username, email, password } = req.body;
-    const newUser = new user({ username, email, password });
+    const { username, email, password ,USN,semester,userRole} = req.body;
+    const newUser = new user({ username, email, password ,USN,semester,userRole});
     try {
         const new2 = await newUser.save();
         res.send("user registered successfully");

@@ -5,6 +5,7 @@ const mongoose=require('mongoose')
 const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
 const questionsRoute=require('./routes/qRoute.js')
+const ansroute=require('./routes/ansroute.js')
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
@@ -26,22 +27,26 @@ app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
 
 
 
-adduser=async ()=>{
-    question.deleteMany({})
-    question.insertMany({
-        username:'hello bot',
-        Question:'what is a genai?',
+// adduser=async ()=>{
+//     question.deleteMany({})
+//     question.insertMany({
+//         username:'hello bot',
+//         Question:'what is a genai?',
         
 
-    })
-}
+//     })
+// }
 //index route
 app.get('/',(req,res)=>{
     res.send('index route')
 })
 //questions qoute
 app.use('/questions',questionsRoute)
-// adduser()
+
+//answers route
+app.use('/answers',ansroute)
+
+
 
 const userRoute = require('./routes/userRoute');
 app.use('/api/user', userRoute);

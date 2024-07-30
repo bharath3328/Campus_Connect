@@ -2,7 +2,7 @@ const mongoose=require('mongoose')
 const schema=mongoose.Schema
 const bycrypt =require("bcrypt");
 const jwt=require('jsonwebtoken');
-const userSchema=schema({
+const userschema=schema({
     email:{
         type:String,
         require
@@ -35,13 +35,13 @@ const userSchema=schema({
     timestamps:true,
 })
 
-userSchema.pre('save',async function(next){
+userschema.pre('save',async function(next){
     const salt=await bycrypt.genSalt();
     this.password=await bycrypt.hash(this.password,salt);
     next();
 })
 
-userSchema.methods.generateAuth=async function(){
+userschema.methods.generateAuth=async function(){
     try{
         let token=jwt.sign({_id:this._id},"mysecretkey");
         return token;
@@ -50,6 +50,6 @@ userSchema.methods.generateAuth=async function(){
     }
 }
 
-const user=mongoose.model('user',userSchema)
+const user=mongoose.model('user',userschema)
 module.exports=user;
 
