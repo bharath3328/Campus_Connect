@@ -1,6 +1,7 @@
 const question=require('../models/questions')
 const user=require('../models/userModel')
 const express=require('express')
+
 const routes=express.Router();
 //index route
 routes.get('/',async (req,res)=>{
@@ -8,17 +9,12 @@ routes.get('/',async (req,res)=>{
    
     res.status(200).send(result)
 })
+
+
 //new route add a new question
 routes.post('/postQn',async (req,res)=>{
-    let {username,Question,subject,filename,url}=req.post
-    await question.insertOne({
-        username:username,
-        Question:question,
-        image:{
-            filename:filename,
-            url:url
-        }
-    })
+    const result=new question(req.body)
+    result.save()
     res.status(200).send('Question added successfully')
 })
 // delete question

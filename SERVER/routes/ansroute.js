@@ -17,6 +17,13 @@ routes.post('/new',async(req,res)=>{
     res.status(200).send(newq)
     
 })
+//view route
+routes.get('/getAnswer/:id',async (req,res)=>{
+    let q_id=req.params
+    await answer.findOne({q_id:q_id}).then((res)=>{
+        res.status(200).send(res)
+    })
+})
 //delete answer
 routes.delete('/delete',async (req,res)=>{
     
