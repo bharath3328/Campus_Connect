@@ -2,7 +2,6 @@ const express=require("express")
 const app=express()
 const cors=require("cors")
 const mongoose=require('mongoose')
-const user=require('./models/userModel.js')
 const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
 const questionsRoute=require('./routes/qRoute.js')
@@ -23,7 +22,7 @@ async function main() {
     await mongoose.connect(mongoUrl);
 }
 
-app.use(cors({ origin: ["http://localhost:5174"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
 
 
 
