@@ -1,9 +1,33 @@
+import { useParams } from "react-router-dom";
+
 import { Button } from "@material-tailwind/react";
 import { Loading } from '../components/Loading';
 import { useState } from "react";
 export const ViewAnswer = () => {
-    const [load,setLoad]=useState(false);
-    if(load){
+    const {id}=useParams();
+    
+    
+    const [answer, setAnswer] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get('/api/answers/getAns/${id}'); 
+            setAnswer(response.data); 
+            setLoading(false); 
+          } catch (err) {
+            setError(err); 
+            setLoading(false); 
+          }
+        };
+    
+        fetchData(); 
+      }, []); 
+    
+    if (error) return <p>Error: {error.message}</p>;
+    if(loading){
         return <Loading/>
     }
     return (

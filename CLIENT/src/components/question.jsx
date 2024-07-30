@@ -7,7 +7,7 @@ import {
   Chip 
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom';
-export function Question() {
+export function Question({data}) {
   //get role from the auth state
   // const state=useSelector((state)=>state.authUser);
   // const role=state.user.role;
@@ -15,6 +15,8 @@ export function Question() {
   const role = "teacher";
   const isAnswered = true;
   const isVerified = true;
+  
+  
   return (
     <Card className="mt-6 w-96">
       <CardBody>
@@ -22,14 +24,14 @@ export function Question() {
           <Button color="white" className="text-green-500">verified</Button>
         )}
         <Typography variant="h5" color="blue-gray" className="mb-2">
-          @username
+          {data.username}
         </Typography>
         <Typography>
-          question?
+          {data.question}
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
-        {isAnswered ? <Button onClick={() => navigate('/viewanswer')}>View Answer</Button> : <Button onClick={() => navigate('/answer')}>Answer</Button>}
+        {isAnswered ? <Button onClick={() => navigate('/viewanswer/')}>View Answer</Button> : <Button onClick={() => navigate('/answer')}>Answer</Button>}
         {(role === "teacher" && isVerified!=true) && (
           <Button>Verify</Button>
         )}

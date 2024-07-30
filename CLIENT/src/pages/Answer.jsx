@@ -5,19 +5,26 @@ import {
     CardBody,
     Typography,
 } from "@material-tailwind/react";
+
+import axios from "../axios";
+
 export const Answer = () => {
     const [answer, setAnswer] = useState('');
     const [image, setImage] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
         const answerData = {
             answer: answer,
             image: image,
         }
         console.log(answerData);
-        //post answer in the db
-        //working fine send it to the db to save
+        try{
+            const response= await axios.post('/api/answers/postAns');
+            console.log(response.data);
+        }catch(err){
+            console.log(err.message);
+        }
     };
     //with the form render the question as well 
     //in a seperate div 

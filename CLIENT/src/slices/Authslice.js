@@ -2,20 +2,18 @@
 //common axios is working 
 //use that 
 import { createSlice ,createAsyncThunk} from "@reduxjs/toolkit";
-// import axios from '../axios.jsx';
+import axios from '../axios.jsx';
 
-// axios.defaults.withCredentials=true;
 
 export const loginUser=createAsyncThunk('loginUser',async(data)=>{
-//    const response= await axios.post("/api/user/login",data);
-//    console.log(response.data);
-//    return response.data;
-    console.log(data);
+   const response= await axios.post("/api/user/login",data);
+   console.log(response.data);
+   return response.data;
 })
 
 export const logoutUser=createAsyncThunk('logoutUser',async(data)=>{
-    // const response= await axios.get("/api/user/logout");
-    // console.log(response.data);
+    const response= await axios.get("/api/user/logout");
+    console.log(response.data);
 })
 
 

@@ -1,7 +1,9 @@
 import { useDispatch} from 'react-redux';
 import React, { useState } from 'react';
 import { useNotifications } from '../slices/notifications';
-import {notify} from '../slices/notificationSlice'
+import {notify} from '../slices/notificationSlice';
+import axios from '../axios';
+
 export const PostQuestion = () => {
   const [question, setQusetion] = useState('');
   const [subject, setSubject] = useState('');
@@ -11,7 +13,7 @@ export const PostQuestion = () => {
   //able to display the notification message 
   useNotifications();
   const dispatch=useDispatch();
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const questionData = {
       question: question,
@@ -19,7 +21,15 @@ export const PostQuestion = () => {
       image:image,
     }
     console.log(questionData);
-    dispatch(notify({message:'Question Posted Successfully',type:'success'}));
+    try{
+      const response = await axios.post('/api/questions/postQn');
+      dispatch(notify({message:'Question Posted Successfully',type:'success'}));
+    }catch(err)
+    {
+      //dispatch error redirect to view page 
+    }
+    
+    
     //post question in the db
     //working fine post it with axios
   };

@@ -6,12 +6,10 @@ import {
   Typography,
   Input,
   Button,
-  Select,
-  Option
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import {axiosApi} from '../axios.jsx';
+import axios from '../axios';
 export function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,13 +28,16 @@ export function Signup() {
       sem: sem,
     }
     console.log(data);
-    // try {
-    //   const res = await axiosApi.post("/posts",data);
-    //   console.log(res.message);
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
+    try {
+      const res = await axios.post("/api/user/signup",data);
+      console.log(res.message);
+      //dispatch notification
+    } catch (error) {
+      console.log(error.message);
+    }
   }
+  
+  
   return (
     <div className="flex items-center justify-center mt-40">
       <Card className="w-96">

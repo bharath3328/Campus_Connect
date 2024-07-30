@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.withCredentials=true;
-// we need to pass the baseURL as an object
-const axiosApi = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
+// Create an Axios instance
+const api = axios.create({
+  baseURL: 'http://localhost:8085/', // Replace with your backend API URL
+  withCredentials: true, // Include cookies in requests
 });
 
-export default axiosApi;
+export default api;
