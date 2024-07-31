@@ -14,7 +14,7 @@ export function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [usn, setUsn] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState('student');
   const [username, setUsername] = useState('');
   const [sem, setSem] = useState();
   const navigate = useNavigate();
@@ -22,15 +22,15 @@ export function Signup() {
     const data = {
       email: email,
       password: password,
-      usn: usn,
-      role: role,
+      USN: usn,
+      userRole: role,
       username: username,
-      sem: sem,
+      semester: sem,
     }
     console.log(data);
     try {
       const res = await axios.post("/api/user/signup",data);
-      console.log(res.message);
+      console.log(res.data);
       //dispatch notification
     } catch (error) {
       console.log(error.message);

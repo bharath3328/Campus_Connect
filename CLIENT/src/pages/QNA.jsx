@@ -14,7 +14,7 @@ export const QNA = () => {
     useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/questions/viewQns'); 
+        const response = await axios.get('/api/questions/viewQns');  
         setData(response.data); 
         setLoading(false); 
       } catch (err) {
@@ -28,7 +28,7 @@ export const QNA = () => {
 
     if (error) return <p>Error: {error.message}</p>;
     if (loading) return <Loading/>;
-    
+    if(data) console.log(data);
     return (
         <>
             <div className="flex items-center justify-center">
@@ -36,8 +36,8 @@ export const QNA = () => {
             </div>
             <div className="flex items-center justify-center">
                 <div className="grid grid-cols-3 gap-5">
-                    {data.map((data,index)=>{
-                      <Question key={index} data={data} />
+                    {data.map((question,index)=>{
+                      return <Question key={index} data={question} />
                     })}
                     
                 </div>

@@ -6,6 +6,7 @@ const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
 const questionsRoute=require('./routes/qRoute.js')
 const ansroute=require('./routes/ansroute.js')
+const blogroute=require('./routes/blogroute.js')
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
@@ -46,6 +47,8 @@ app.use('/api/questions',questionsRoute)
 //answers route
 app.use('/api/answers',ansroute)
 
+
+app.use('/blogs',blogroute)
 
 
 const userRoute = require('./routes/userRoute');

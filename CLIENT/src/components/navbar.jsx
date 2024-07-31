@@ -7,8 +7,10 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 function NavList() {
+  const navigate=useNavigate();
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -17,7 +19,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button className="bg-custom-blue">
+        <Button className="bg-custom-blue" onClick={()=>navigate('/questions')}>
           QNA
         </Button>
       </Typography>
@@ -27,7 +29,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button className="bg-custom-blue">Lecture Materials</Button>
+        <Button className="bg-custom-blue" onClick={()=>navigate('/notes')}>Lecture Materials</Button>
       </Typography>
       <Typography
         as="li"
@@ -35,7 +37,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button className="bg-custom-blue">Jobs</Button>
+        <Button className="bg-custom-blue" onClick={()=>navigate()}>Jobs</Button>
       </Typography>
       <Typography
         as="li"
@@ -43,7 +45,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button className="bg-custom-blue">Placement Blogs </Button>
+        <Button className="bg-custom-blue" onClick={()=>navigate('/blogs')}>Placement Blogs </Button>
       </Typography>
     </ul>
   );
@@ -52,11 +54,7 @@ function NavList() {
 export function NavbarSimple() {
   const [openNav, setOpenNav] = React.useState(false);
 
-  //conditional rendering for the nav bar
-  //if the person is logged in then he has the options in the navbar
-  //from auth user check whether user exists or not 
-  const isLoggedIn = true;
-  //by default the condition is true
+  const isLoggedIn = useSelector(state=>state.authUser.user);
   const handleWindowResize = () =>
     window.innerWidth >= 960 && setOpenNav(false);
 
@@ -76,7 +74,7 @@ export function NavbarSimple() {
           href="#"
           variant="h6"
           className="mr-4 cursor-pointer py-1.5 text-custom-blue"
-          onClick={() => navigate('/home')}
+          onClick={() => navigate('/')}
         >
           Campus Connect
         </Typography>

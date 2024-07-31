@@ -12,16 +12,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../slices/Authslice';
 import { useNavigate } from "react-router-dom";
 export function Login() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginHandler = () => {
+  const loginHandler = async() => {
     const data = {
-      email: email,
+      username: username,
       password: password,
     }
     dispatch(loginUser(data));
+    navigate('/');
   }
 
   return (
@@ -36,7 +37,7 @@ export function Login() {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
-          <Input label="Email" size="lg" onChange={(e) => setEmail(e.target.value)} />
+          <Input label="Username" size="lg" onChange={(e) => setUsername(e.target.value)} />
           <Input label="Password" size="lg" onChange={(e) => setPassword(e.target.value)} />
         </CardBody>
         <CardFooter className="pt-0">

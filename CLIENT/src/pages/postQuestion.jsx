@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import { useNotifications } from '../slices/notifications';
 import {notify} from '../slices/notificationSlice';
 import axios from '../axios';
-
+import { useSelector } from 'react-redux';
+import {useNavigate } from 'react-router-dom';
 export const PostQuestion = () => {
   const [question, setQusetion] = useState('');
   const [subject, setSubject] = useState('');
   const [image, setImage] = useState(null);
-
+  const username=useSelector(state=>state.authUser.user.name);
+  const navigate=useNavigate();
   //we have to use the function then only we can 
   //able to display the notification message 
   useNotifications();
@@ -18,20 +20,19 @@ export const PostQuestion = () => {
     const questionData = {
       question: question,
       subject: subject,
-      image:image,
+      image:JSON.stringify({
+        base64:image
+      }),
+      username:username,
     }
-    console.log(questionData);
     try{
-      const response = await axios.post('/api/questions/postQn');
+      const response = await axios.post('/api/questions/postQn',questionData);
       dispatch(notify({message:'Question Posted Successfully',type:'success'}));
+      navigate('/questions');
     }catch(err)
     {
       //dispatch error redirect to view page 
     }
-    
-    
-    //post question in the db
-    //working fine post it with axios
   };
 
   return (

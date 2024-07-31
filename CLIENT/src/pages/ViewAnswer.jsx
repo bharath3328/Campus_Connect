@@ -1,12 +1,9 @@
 import { useParams } from "react-router-dom";
-
 import { Button } from "@material-tailwind/react";
 import { Loading } from '../components/Loading';
 import { useState } from "react";
 export const ViewAnswer = () => {
     const {id}=useParams();
-    
-    
     const [answer, setAnswer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -22,7 +19,6 @@ export const ViewAnswer = () => {
             setLoading(false); 
           }
         };
-    
         fetchData(); 
       }, []); 
     

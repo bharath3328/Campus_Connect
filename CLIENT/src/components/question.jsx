@@ -7,16 +7,14 @@ import {
   Chip 
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 export function Question({data}) {
-  //get role from the auth state
-  // const state=useSelector((state)=>state.authUser);
-  // const role=state.user.role;
+  console.log(data);
   const navigate = useNavigate();
-  const role = "teacher";
-  const isAnswered = true;
-  const isVerified = true;
-  
-  
+  const role = useSelector(state=>state.authUser.user.userRole);
+  const isAnswered =data.isAnswered;
+  const isVerified =data.isVerified;
+  const qid=data._id;
   return (
     <Card className="mt-6 w-96">
       <CardBody>
@@ -27,7 +25,7 @@ export function Question({data}) {
           {data.username}
         </Typography>
         <Typography>
-          {data.question}
+          {data.Question}
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
