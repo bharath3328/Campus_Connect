@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
             const user={
                 _id:dbuser._id,
                 name:dbuser.username,
-                role:dbuser.role,
+                userRole:dbuser.userRole,
             }
             res.send(user);
         } else {

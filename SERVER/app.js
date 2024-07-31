@@ -41,10 +41,10 @@ app.get('/',(req,res)=>{
     res.send('index route')
 })
 //questions qoute
-app.use('/questions',questionsRoute)
+app.use('/api/questions',questionsRoute)
 
 //answers route
-app.use('/answers',ansroute)
+app.use('/api/answers',ansroute)
 
 
 

@@ -1,24 +1,20 @@
-const question=require('../models/questions')
+const Question=require('../models/questions')
 const user=require('../models/userModel')
 const express=require('express')
 const routes=express.Router();
 //index route
-routes.get('/',async (req,res)=>{
-    result= await question.find()
-   
-    res.status(200).send(result)
+routes.get('/viewQns',async (req,res)=>{
+    result= await Question.find()
+    res.status(200).send(result);
 })
 //new route add a new question
 routes.post('/postQn',async (req,res)=>{
-    let {username,Question,subject,filename,url}=req.post
-    await question.insertOne({
+    let {username,question}=req.body
+    const result=new Question({
         username:username,
-        Question:question,
-        image:{
-            filename:filename,
-            url:url
-        }
+        Question:question
     })
+    await result.save();
     res.status(200).send('Question added successfully')
 })
 // delete question
