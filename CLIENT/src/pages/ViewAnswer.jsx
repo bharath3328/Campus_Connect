@@ -4,12 +4,13 @@ import { Loading } from '../components/Loading';
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from '../axios';
+import {useSelector} from 'react-redux';
 export const ViewAnswer = () => {
     const {id}=useParams();
     const [answer, setAnswer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-     
+    //  const role=useSelector(state=>state.authUser.user.userRole);
     useEffect(() => {
         const fetchData = async () => {
           try {

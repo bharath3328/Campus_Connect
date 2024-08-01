@@ -27,7 +27,7 @@ export const Answer = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get(`/api/questions/getQn/:${id}`);  
+            const response = await axios.get(`/api/questions/getQn/${id}`);  
             setQuestion(response.data.question); 
             {
                 response.data.image && setQImage(response.data.image)

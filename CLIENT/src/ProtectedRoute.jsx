@@ -1,14 +1,15 @@
+// ProtectedRoute.js
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useUser } from './UserContext';
+import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({ element, allowedRoles }) => {
-  const { user } = useUser();
+  const userRole = useSelector((state) => state.authUser.user.userRole);
 
-  return allowedRoles.includes(user.role) ? (
+  return allowedRoles.includes(userRole) ? (
     element
   ) : (
-    <Navigate to="/login" replace />
+    <Navigate to="/notAuthorized" replace />
   );
 };
 

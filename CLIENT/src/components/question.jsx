@@ -38,9 +38,6 @@ export function Question({data}) {
         <Button onClick={()=>navigate(`/answer/${qid}`)}>Answer</Button>
         </>
         }
-        {(role === "teacher" && isVerified!=true) && (
-          <Button>Verify</Button>
-        )}
       </CardFooter>
     </Card>
   );

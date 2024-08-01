@@ -18,6 +18,8 @@ import { ViewSubject } from './pages/viewSubjects';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { BlogPage } from './pages/viewBLog';
 import { JobsAndHackathons } from './pages/Jobs_hackathons';
+import ProtectedRoute from './ProtectedRoute';
+import { NotAuthorized } from './components/NotAuth';
 
 function App() {
   const location = useLocation();
@@ -30,26 +32,26 @@ function App() {
         {!shouldHideHeaderFooter && <NavbarSimple />}
         <TransitionGroup>
           <CSSTransition key={location.key} classNames="fade" timeout={1000}>
-            <Routes>
-              <Route path='/' element={<Home />}></Route>
-              <Route path='/login' element={<Login />}></Route>
-              <Route path='/signup' element={<Signup />}></Route>
-              <Route path='/questions' element={<QNA />}></Route>
-              <Route path='/postQn' element={<PostQuestion />}></Route>
-              <Route path='/answer/:id' element={<Answer />}></Route>
-              <Route path='/viewanswer/:id' element={<ViewAnswer />}></Route>
-              <Route path='/uploadnotes' element={<UploadNotes />}></Route>
-              <Route path='/viewnotes' element={<ViewNotes />}></Route>
-              <Route path='/blogs' element={<Blogs />}></Route>
-              <Route path='/uploadblogs' element={<UploadBlog />}></Route>
-              <Route path='/viewsubjects' element={<ViewSubject />}></Route>
-              <Route path='/viewblog/:id' element={<BlogPage />}></Route>
-              <Route path='/jobs' element={<JobsAndHackathons />}></Route>
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/notAuthorized" element={<NotAuthorized />} />
+              <Route path="/questions" element={<ProtectedRoute element={<QNA />} allowedRoles={['teacher', 'student']} />} />
+              <Route path="/postQn" element={<ProtectedRoute element={<PostQuestion />} allowedRoles={['teacher', 'student']} />} />
+              <Route path="/answer/:id" element={<ProtectedRoute element={<Answer />} allowedRoles={['teacher', 'student']} />} />
+              <Route path="/viewanswer/:id" element={<ProtectedRoute element={<ViewAnswer />} allowedRoles={['teacher', 'student']} />} />
+              <Route path="/uploadnotes" element={<ProtectedRoute element={<UploadNotes />} allowedRoles={['teacher', 'student']} />} />
+              <Route path="/viewnotes" element={<ProtectedRoute element={<ViewNotes />} allowedRoles={['teacher', 'student']} />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/uploadblogs" element={<ProtectedRoute element={<UploadBlog />} allowedRoles={['alumni']} />} />
+              <Route path="/viewblog/:id" element={<BlogPage />} allowedRoles={['teacher', 'student','alumni']}/>
+              <Route path="/jobs" element={<ProtectedRoute element={<JobsAndHackathons />} allowedRoles={['admin', 'user','alumni']} />} />
             </Routes>
           </CSSTransition>
         </TransitionGroup>
         {!shouldHideHeaderFooter && <Footer />}
-      </Provider>  
+    </Provider>
     </>
   )
 }

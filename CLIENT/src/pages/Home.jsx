@@ -35,7 +35,6 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const user = useSelector(state => state.authUser.user);
-
   return (
     <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex flex-col items-center justify-center px-4 md:px-8 lg:px-16">
       <div className="h-screen relative flex flex-col items-center justify-center text-center">
@@ -58,7 +57,7 @@ export const Home = () => {
           </div>
         }
         {
-          user &&
+         user && ['teacher', 'student'].includes(user.userRole) && 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
             <button onClick={() => navigate('/questions')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               QNA 
@@ -66,6 +65,17 @@ export const Home = () => {
             <button onClick={() => navigate('/notes')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               Materials
             </button>
+            <button onClick={() => navigate('/blogs')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
+              Placement Blogs
+            </button>
+            <button onClick={() => navigate('/')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
+              Jobs & Hackathons
+            </button>
+          </div>
+        }
+        {
+         user&& ['alumni'].includes(user.userRole) && 
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
             <button onClick={() => navigate('/blogs')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               Placement Blogs
             </button>
@@ -83,12 +93,11 @@ export const Home = () => {
     </div>
   );
 };
-
 const FeatureCard = ({ feature }) => {
 
   return (
     <div
-      className={`transform transition duration-500 ease-in-out bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6 shadow-lg flex flex-col items-center text-center`}
+      className={`transform transition duration-500 ease-in-out bg-white  bg-opacity-20 backdrop-blur-lg rounded-lg p-6 shadow-lg flex flex-col items-center text-center`}
     >
       <div className="text-6xl mb-4">{feature.icon}</div>
       <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>

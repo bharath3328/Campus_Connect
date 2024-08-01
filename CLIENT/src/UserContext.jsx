@@ -4,8 +4,8 @@ const UserContext = createContext();
 import {useSelector } from 'react-redux';
 export const UserProvider = ({ children }) => {
 
-  
-  const [user, setUser] = useState({ role: 'guest' }); // Example user object
+  const role=useSelector(state=>state.authUser.user.userRole)
+  const [user, setUser] = useState({ role: role }); // Example user object
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
