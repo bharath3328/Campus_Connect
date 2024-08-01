@@ -7,6 +7,7 @@ export const UploadBlog = () => {
     const [company, setCompany] = useState('');
     const [salary, setSalary] = useState('');
     const [content, setContent] = useState('');
+    const [headline, setHeadline] = useState('');
     const [image, setImage] = useState(null);
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -17,6 +18,7 @@ export const UploadBlog = () => {
             salary:salary,
             content:content,
             image:image,
+            headline:headline,
         }
         console.log(blogData);
     }
@@ -72,6 +74,20 @@ export const UploadBlog = () => {
                         id="field2"
                         value={salary}
                         onChange={(e) => setSalary(e.target.value)}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="field2" className="block text-gray-700 text-sm font-bold mb-2">
+                        Headline of the Blog
+                    </label>
+                    <input
+                        required
+                        type="text"
+                        name="field2"
+                        id="field2"
+                        value={headline}
+                        onChange={(e) => setHeadline(e.target.value)}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
                 </div>
