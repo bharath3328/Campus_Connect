@@ -8,7 +8,13 @@ routes.get('/viewQns',async (req,res)=>{
     result= await Question.find()
     res.status(200).send(result);
 })
-
+//view question
+routes.get('/getQn/:id',async (req,res)=>{
+    let {id}=req.params
+    await Question.findOne({_id:id}).then((result)=>{
+        res.status(200).send(result)
+    })
+})
 
 //new route add a new question
 routes.post('/postQn',async (req,res)=>{
@@ -19,7 +25,7 @@ routes.post('/postQn',async (req,res)=>{
 // delete question
 routes.delete('/delete/:id',async (req,res)=>{
     let {id}=req.params
-    await question.findByIdAndDelete(id)
+    await Question.findByIdAndDelete(id)
     res.status(200).send('Question deleted successfully')
     
 })

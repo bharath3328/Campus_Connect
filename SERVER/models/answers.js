@@ -12,7 +12,7 @@ const ans_schema=schema({
         require
     },
     image:{
-        type:String
+        type:schema.Types.Mixed
     },
     user_id:{
         type:schema.Types.ObjectId,
