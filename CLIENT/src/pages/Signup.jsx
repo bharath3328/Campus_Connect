@@ -60,7 +60,7 @@ export function Signup() {
             <select className="p-2 m-2" required name="who are you ?" onChange={(e)=>setRole(e.target.value)}>
             <option value="student">Student</option>
             <option value="alumni">Alumini</option>
-            <option value="alumni">Teacher</option>
+            <option value="teacher">Teacher</option>
           </select>
           </div>
         </CardBody>
