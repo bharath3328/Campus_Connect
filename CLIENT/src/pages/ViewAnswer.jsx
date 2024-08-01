@@ -51,11 +51,13 @@ export const ViewAnswer = () => {
                             className="h-full max-w-xl hover:scale-150 " />
                     </div>
                     <div className="mx-5 my-5 flex justify-between ">
-                        <div className="flex gap-5">
+                        {/* <div className="flex gap-5">
                             <Button >edit </Button>
                             <Button>delete </Button>
-                        </div>
-                        <Button>verify </Button>
+                        </div> */}
+                        {
+                            role==='teacher' && <Button> verify </Button>
+                        } 
                     </div>
                 </div>
             </div>
@@ -66,3 +68,6 @@ export const ViewAnswer = () => {
 //then  display it
 //use effect to fetch the answer
 // conditional rendering for the buttons and verification
+
+
+//add edit and delete options later 

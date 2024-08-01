@@ -9,8 +9,15 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from 'react-router-dom';
 import {useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
+import { logoutUser } from '../slices/Authslice';
 function NavList() {
   const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const logout=()=>{
+    dispatch(logoutUser());
+  }
+  
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -47,6 +54,14 @@ function NavList() {
       >
         <Button className="bg-custom-blue" onClick={()=>navigate('/blogs')}>Placement Blogs </Button>
       </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <Button className="bg-custom-blue" onClick={()=>logout()}>Logout</Button>
+      </Typography>
     </ul>
   );
 }
@@ -79,7 +94,7 @@ export function NavbarSimple() {
           Campus Connect
         </Typography>
         <div className="hidden lg:block">
-          {isLoggedIn == true &&
+          {isLoggedIn &&
             <NavList />
           }
         </div>
@@ -97,7 +112,7 @@ export function NavbarSimple() {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        {isLoggedIn == true &&
+        {isLoggedIn &&
           <NavList />
         }
       </Collapse>

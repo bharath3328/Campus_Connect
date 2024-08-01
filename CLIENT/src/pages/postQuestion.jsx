@@ -1,5 +1,5 @@
-import { useDispatch} from 'react-redux';
 import React, { useState } from 'react';
+import { useDispatch} from 'react-redux';
 import { useNotifications } from '../slices/notifications';
 import {notify} from '../slices/notificationSlice';
 import axios from '../axios';
@@ -25,13 +25,14 @@ export const PostQuestion = () => {
       }),
       username:username,
     }
-    try{
+    try{ 
       const response = await axios.post('/api/questions/postQn',questionData);
       dispatch(notify({message:'Question Posted Successfully',type:'success'}));
       navigate('/questions');
     }catch(err)
     {
-      //dispatch error redirect to view page 
+      dispatch(notify({message:'error: Question Not Posted ',type:'error'}));
+      navigate('/questions');
     }
   };
 

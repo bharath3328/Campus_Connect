@@ -11,18 +11,21 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../slices/Authslice';
 import { useNavigate } from "react-router-dom";
+import { useNotifications } from '../slices/notifications';
+import {notify} from '../slices/notificationSlice';
 export function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useNotifications();
   const loginHandler = async() => {
     const data = {
       username: username,
       password: password,
     }
     dispatch(loginUser(data));
-    navigate('/');
+      navigate('/');
   }
  
   return (

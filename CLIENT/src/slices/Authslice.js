@@ -3,16 +3,16 @@
 //use that 
 import { createSlice ,createAsyncThunk} from "@reduxjs/toolkit";
 import axios from '../axios.jsx';
-
-
+import { useNavigate } from "react-router-dom";
 export const loginUser=createAsyncThunk('loginUser',async(data)=>{
-   const response = await axios.post("/api/user/login",data);
-   return response.data; 
-})
+    const response = await axios.post("/api/user/login",data);
+    return response.data;
+}) 
 
-export const logoutUser=createAsyncThunk('logoutUser',async(data)=>{
-    const response= await axios.get("/api/user/logout");
-    console.log(response.data);
+export const logoutUser=createAsyncThunk('logoutUser',async()=>{
+    const navigate=useNavigate();
+    await axios.get("/api/user/logout");
+    navigate('/');
 })
 
 

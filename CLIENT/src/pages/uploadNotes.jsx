@@ -1,16 +1,17 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from '../axios';
-
+import { useDispatch} from 'react-redux';
+import { useNotifications } from '../slices/notifications';
+import {notify} from '../slices/notificationSlice';
 export const UploadNotes = () => {
   const [subject, setSubject] = useState('');
   const [chapter, setChapter] = useState('');
   const [link, setLink] = useState('');
   const [type, setType] = useState('');
   const [sem, setSem] = useState(1);
-  
-
-  
+  useNotifications();
+  const dispatch=useDispatch();
   const navigate = useNavigate();
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -24,11 +25,12 @@ export const UploadNotes = () => {
     console.log(notesData);
     try{
       const response = await axios.post('/api/notes/uploadNotes',notesData);
-      // dispatch(notify({message:'Question Posted Successfully',type:'success'}));
+      dispatch(notify({message:'Material Uploaded Successfully',type:'success'}));
       navigate('/notes');
     }catch(err)
     {
-      //dispatch error redirect to view page 
+      dispatch(notify({message:'error: please try again',type:'error'}));
+      navigate('/notes');
     }
   }
 

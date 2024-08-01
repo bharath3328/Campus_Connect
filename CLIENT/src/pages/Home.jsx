@@ -11,7 +11,7 @@ const features = [
   },
   {
     title: "Resource Sharing",
-    description: "Share and access notes,lecture materials and other resources.",
+    description: "Share and access notes , lecture materials and other resources.",
     icon: "📚",
   },
   {
@@ -21,7 +21,7 @@ const features = [
   },
   {
     title: "News Section",
-    description: "Stay updated with news about hackathons and seminars.",
+    description: "Stay updated with news about hackathons",
     icon: "📰",
   },
   {
