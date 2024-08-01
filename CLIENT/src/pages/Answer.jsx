@@ -50,7 +50,7 @@ export const Answer = () => {
         }
         console.log(answerData);
         try{
-            const response= await axios.post('/api/answers/postAns',answerData);
+            const response= await axios.post('/api/answers/new',answerData);
             console.log(response.data);
             navigate(`/viewanswer/${id}`)
         }catch(err){
