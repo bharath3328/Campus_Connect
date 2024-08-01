@@ -2,19 +2,19 @@ const express=require("express")
 const blog=require('../models/blogModel')
 const router=express.Router()
 //index route
-router.get('/',async (req,res)=>{
+router.get('/viewBlogs',async (req,res)=>{
     let result=await blog.find()
     res.status(200).send(result)
 })
 //show route
-router.get('/view',async(req,res)=>{
-    let {user_id}=req.body
-    let result=await blog.findOne({user_id:user_id})
+router.get('/getBlog',async(req,res)=>{
+    let {blog_id}=req.params
+    let result=await blog.findOne({_id:blog_id})
     res.status(200).send(result)
 
 })
 //new route
-router.post('/',(req,res)=>{
+router.post('/newBlog',(req,res)=>{
     const newblog=new blog(req.body)
     newblog.save()
     res.status(200).send('blog added successfully')
