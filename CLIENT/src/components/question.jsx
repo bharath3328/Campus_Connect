@@ -29,7 +29,7 @@ export function Question({data}) {
           {data.username}
         </Typography>
         <Typography>
-          {data.Question}
+          {data.question}
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">

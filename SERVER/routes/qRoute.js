@@ -12,15 +12,8 @@ routes.get('/viewQns',async (req,res)=>{
 
 //new route add a new question
 routes.post('/postQn',async (req,res)=>{
-    let {username,Question,subject,filename,url}=req.post
-    await Question.insertOne({
-        username:username,
-        Question:question,
-        image:{
-            filename:filename,
-            url:url
-        }
-    })
+    let result=new Question(req.body)
+    result.save()
     res.status(200).send('Question added successfully')
 })
 // delete question
