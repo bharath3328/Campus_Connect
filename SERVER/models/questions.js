@@ -11,7 +11,7 @@ const q_schema=schema({
         type:String,
         require
     },
-    Question:{
+    question:{
         type:String,
         require
     },
