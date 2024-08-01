@@ -24,7 +24,7 @@ export function Login() {
     dispatch(loginUser(data));
     navigate('/');
   }
-
+ 
   return (
     <div className="flex items-center justify-center mt-40">
       <Card className="w-96">
@@ -37,8 +37,8 @@ export function Login() {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
-          <Input label="Username" size="lg" onChange={(e) => setUsername(e.target.value)} />
-          <Input label="Password" size="lg" onChange={(e) => setPassword(e.target.value)} />
+          <Input required label="Username" type="string" size="lg" onChange={(e) => setUsername(e.target.value)} />
+          <Input required label="Password" type="password" size="lg" onChange={(e) => setPassword(e.target.value)} />
         </CardBody>
         <CardFooter className="pt-0">
           <Button className="bg-custom-blue"  fullWidth onClick={() => loginHandler()}>

@@ -7,34 +7,70 @@ import {
 } from "@material-tailwind/react";
 
 import axios from "../axios";
-
+import { useParams } from 'react-router-dom'; 
+import { useEffect } from 'react';
+import {useSelector} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 export const Answer = () => {
+    
+    const {id} =useParams();
     const [answer, setAnswer] = useState('');
     const [image, setImage] = useState(null);
+    const [qimage, setQImage] = useState(null);
+    const [question, setQuestion] = useState(null);
+    const [error, setError] = useState(null);
 
+    const navigate=useNavigate();
+    // const userId=useSelector(state=>state.authIser.user._id);
+    const userId=12345;
+    
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`/api/questions/getQn/:${id}`);  
+            setQuestion(response.data.question); 
+            {
+                response.data.image && setQImage(response.data.image)
+            }
+          } catch (err) {
+            setError(err); 
+          }
+        };
+        fetchData(); 
+      }, []); 
+    
     const handleSubmit =async (e) => {
         e.preventDefault();
         const answerData = {
             answer: answer,
-            image: image,
+            image:JSON.stringify({
+                base64:image
+              }),
+            userId:userId,
         }
         console.log(answerData);
         try{
-            const response= await axios.post('/api/answers/postAns');
+            const response= await axios.post('/api/answers/postAns',answerData);
             console.log(response.data);
+            navigate(`/viewanswer/${id}`)
         }catch(err){
             console.log(err.message);
         }
     };
-    //with the form render the question as well 
-    //in a seperate div 
+    
+    if (error) return <p>error </p>
     return (
         <>
             <div className='flex items-center justify-center my-10'>
                 <Card className="mt-6 w-96">
                     <CardBody>
                         <Typography>
-                            the question will come here ?
+                            {question}
+                        </Typography>
+                        <Typography>
+                            {
+                                qimage && <img src={qimage} alt="question image" />
+                            } 
                         </Typography>
                     </CardBody>
                 </Card>

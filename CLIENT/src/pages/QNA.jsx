@@ -28,7 +28,6 @@ export const QNA = () => {
 
     if (error) return <p>Error: {error.message}</p>;
     if (loading) return <Loading/>;
-    if(data) console.log(data);
     return (
         <>
             <div className="flex items-center justify-center">

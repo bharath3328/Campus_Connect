@@ -2,16 +2,18 @@ import { useParams } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { Loading } from '../components/Loading';
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from '../axios';
 export const ViewAnswer = () => {
     const {id}=useParams();
     const [answer, setAnswer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+     
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('/api/answers/getAns/${id}'); 
+            const response = await axios.get(`/api/answers/getAns/${id}`); 
             setAnswer(response.data); 
             setLoading(false); 
           } catch (err) {
@@ -38,10 +40,10 @@ export const ViewAnswer = () => {
                     <p className="my-5">
                         <h2>Answered by @username</h2>
                         <h2>Answer:</h2>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum delectus ratione atque tempore soluta, voluptas ex accusamus perferendis, sequi laboriosam corrupti nostrum, temporibus veniam enim possimus alias cumque esse id.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum delectus ratione atque tempore soluta, voluptas ex accusamus perferendis, sequi laboriosam corrupti nostrum, temporibus veniam enim possimus alias cumque esse id.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum delectus ratione atque tempore soluta, voluptas ex accusamus perferendis, sequi laboriosam corrupti nostrum, temporibus veniam enim possimus alias cumque esse id.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum delectus ratione atque tempore soluta, voluptas ex accusamus perferendis, sequi laboriosam corrupti nostrum, temporibus veniam enim possimus alias cumque esse id.
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime nostrum delectus a tempora, placeat nesciunt! Culpa magni consectetur magnam odio accusamus labore cumque doloribus, quis, laudantium voluptas exercitationem aspernatur eum.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, nam temporibus! Id quaerat sint reiciendis suscipit quos possimus sit adipisci et. Sapiente, rerum culpa est exercitationem magni iusto excepturi fugit.
+                        </p>
                     </p>
                     <div className="flex item-center justify-center ">
                         <img src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-souvenirpixels-417074.jpg&fm=jpg" alt="no answer image "

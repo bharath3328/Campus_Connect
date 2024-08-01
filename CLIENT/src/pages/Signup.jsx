@@ -32,6 +32,7 @@ export function Signup() {
       const res = await axios.post("/api/user/signup",data);
       console.log(res.data);
       //dispatch notification
+      navigate('/');
     } catch (error) {
       console.log(error.message);
     }
@@ -51,7 +52,7 @@ export function Signup() {
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
           <Input required label="Email" size="lg" onChange={(e) => setEmail(e.target.value)} />
-          <Input required label="Password" size="lg" onChange={(e) => setPassword(e.target.value)} />
+          <Input required label="Password" type="password" size="lg" onChange={(e) => setPassword(e.target.value)} />
           <Input required label="Username" size="lg" onChange={(e) => setUsername(e.target.value)} />
           <Input required label="USN" size="lg" onChange={(e) => setUsn(e.target.value)} />
           <Input required type='number' min='1' max='8' label="Semester" size="lg" onChange={(e) => setSem(e.target.value)} />

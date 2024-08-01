@@ -8,13 +8,17 @@ import {
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom';
 import {useSelector} from 'react-redux';
+import { Answer } from '../pages/Answer';
+import { useState } from "react";
+
 export function Question({data}) {
-  console.log(data);
   const navigate = useNavigate();
-  const role = useSelector(state=>state.authUser.user.userRole);
+  // const role = useSelector(state=>state.authUser.user.userRole);
+  const role = "student";
   const isAnswered =data.isAnswered;
   const isVerified =data.isVerified;
   const qid=data._id;
+  
   return (
     <Card className="mt-6 w-96">
       <CardBody>
@@ -29,7 +33,11 @@ export function Question({data}) {
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
-        {isAnswered ? <Button onClick={() => navigate('/viewanswer/')}>View Answer</Button> : <Button onClick={() => navigate('/answer')}>Answer</Button>}
+        {isAnswered ? <Button onClick={() => navigate(`/viewanswer/${qid}`)}>View Answer</Button> : 
+        <>
+        <Button onClick={()=>navigate(`/answer/${qid}`)}>Answer</Button>
+        </>
+        }
         {(role === "teacher" && isVerified!=true) && (
           <Button>Verify</Button>
         )}

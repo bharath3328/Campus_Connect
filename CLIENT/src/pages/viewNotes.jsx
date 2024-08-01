@@ -1,23 +1,45 @@
-import { Notes } from '../components/Notes'
+import { useEffect } from 'react'
+import { Notes } from '../components/Notes';
+import { useState } from 'react';
+import { Loading } from '../components/Loading';
+import axios from '../axios';
 export const ViewNotes = () => {
+
+    const [notes, setNotes] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/notes/getNotes');
+                setNotes(response.data);
+                setLoading(false);
+            } catch (err) {
+                setError(err);
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (error) return <p>Error: {error.message}</p>;
+    if (loading) return <Loading />;
+
     return (
         <>
             <div className='flex items-center justify-center my-8 '>
                 <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:grid-cols-3'>
-                    <Notes />
-                    <Notes />
-                    <Notes />
-                    <Notes />
-                    <Notes />
-                    <Notes />
-                    <Notes />
-                    <Notes />
+                    {notes.map((data, index) => {
+                        return <Notes key={index} data={data} />
+                    })}
                 </div>
             </div>
         </>
     )
 }
-//this component is subject wise notes 
+//this component is subject wise notes
 //this will be redirected when we click the subject link
-//this page will be rendered when someone clicks the on the subject 
+//this page will be rendered when someone clicks the on the subject
 //we will access the params to get sub name and make an axios request to get all the notes related to the subject

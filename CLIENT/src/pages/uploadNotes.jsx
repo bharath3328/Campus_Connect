@@ -1,15 +1,18 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import axios from '../axios';
+
 export const UploadNotes = () => {
   const [subject, setSubject] = useState('');
   const [chapter, setChapter] = useState('');
   const [link, setLink] = useState('');
   const [type, setType] = useState('');
-  //get default sem data from the user
-  //user who has uploaded it 
+  const [sem, setSem] = useState(1);
+  
+
+  
   const navigate = useNavigate();
-  const sem = 4;
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const notesData = {
       subject: subject,
@@ -17,12 +20,19 @@ export const UploadNotes = () => {
       link: link,
       type: type,
       sem: sem,
-      //add sem from the user data
     }
     console.log(notesData);
-    //  navigate('/questions');
-    //after posting the notes reedirect to the notes page 
+    try{
+      const response = await axios.post('/api/notes/uploadNotes',notesData);
+      // dispatch(notify({message:'Question Posted Successfully',type:'success'}));
+      navigate('/notes');
+    }catch(err)
+    {
+      //dispatch error redirect to view page 
+    }
   }
+
+  
   return (
     <>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-8 shadow-md rounded my-10">
