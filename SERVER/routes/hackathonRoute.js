@@ -1,6 +1,6 @@
-const express=require('express')
+const express=require("express")
 const routes=express.Router()
-const hackathon=require('../models/hackathon')
+const hackathon=require('../models/hackathon.js')
 //get hackathon
 routes.get('/getHackathons',async (req,res)=>{
     const result=hackathon.find()
