@@ -13,9 +13,9 @@ import { useState } from "react";
 
 export function Question({data}) {
   const navigate = useNavigate();
-  // const role = useSelector(state=>state.authUser.user.userRole);
-  const role = "student";
-  const isAnswered =data.isAnswered;
+  const role = useSelector(state=>state.authUser.user.userRole);
+  
+  const isAnswered =data.isanswered;
   const isVerified =data.isVerified;
   const qid=data._id;
   
@@ -36,10 +36,8 @@ export function Question({data}) {
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
-        {isAnswered ? <Button onClick={() => navigate(`/viewanswer/${qid}`)}>View Answer</Button> : 
-        <>
-        <Button onClick={()=>navigate(`/answer/${qid}`)}>Answer</Button>
-        </>
+        { isAnswered===true ? (<Button onClick={() => navigate(`/viewanswer/${qid}`)}>View Answer</Button>) : 
+                    (<Button onClick={()=>navigate(`/answer/${qid}`)}>Answer</Button>)
         }
       </CardFooter>
     </Card>
