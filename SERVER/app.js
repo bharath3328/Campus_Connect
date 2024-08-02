@@ -6,6 +6,7 @@ const answers=require('./models/answers.js')
 const question=require('./models/questions.js')
 const questionsRoute=require('./routes/qRoute.js')
 const ansroute=require('./routes/ansroute.js')
+const notesRoute=require('./routes/notesRoute')
 const jobroute=require('./routes/jobroute.js')
 const blogroute=require('./routes/blogroute.js')
 const bodyParser = require('body-parser');
@@ -52,7 +53,7 @@ app.use('/api/answers',ansroute)
 app.use('/api/blogs',blogroute)
 //job route
 app.use('/api/jobs',jobroute)
-
+app.use('/api/notes',notesRoute)
 
 const userRoute = require('./routes/userRoute');
 app.use('/api/user', userRoute);

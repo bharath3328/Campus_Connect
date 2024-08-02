@@ -7,9 +7,9 @@ router.get('/viewBlogs',async (req,res)=>{
     res.status(200).send(result)
 })
 //show route
-router.get('/getBlog',async(req,res)=>{
-    let {blog_id}=req.params
-    let result=await blog.findOne({_id:blog_id})
+router.get('/getBlog/:id',async(req,res)=>{
+    let {id}=req.params
+    let result=await blog.findOne({_id:id})
     res.status(200).send(result)
 
 })
