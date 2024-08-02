@@ -11,14 +11,13 @@ const multer=require('multer')
     const result= new answer(req.body)
      result.save()
      
-     const ans=answer.find({q_id:req.body.q_id})
+     
     
     const newq=await question.findByIdAndUpdate(req.body.q_id,{
-        answer:ans._id,
+        answer:result._id,
         isanswered:true
     })
-    console.log(newq)
-    res.status(200).send(newq)
+    res.status(200).send("answer posted successfully")
 })
 //view route
 routes.get('/getAns/:id',async (req,res)=>{
