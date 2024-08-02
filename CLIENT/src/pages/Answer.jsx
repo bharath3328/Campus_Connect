@@ -22,6 +22,7 @@ export const Answer = () => {
     const [image, setImage] = useState(null);
     const [qimage, setQImage] = useState(null);
     const [question, setQuestion] = useState(null);
+    const [questionid, setQuestionid] = useState(null);
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
@@ -36,9 +37,12 @@ export const Answer = () => {
             try {
                 const response = await axios.get(`/api/questions/getQn/${id}`);
                 setQuestion(response.data.question);
+                setQuestionid(response.data.username);
+                
                 {
                     response.data.image && setQImage(response.data.image)
                 }
+
             } catch (err) {
                 setError(err);
             }
@@ -71,16 +75,17 @@ export const Answer = () => {
             <div className='flex items-center justify-center my-10'>
                 <Card className="mt-6 w-96">
                     <CardBody>
-                        <Typography>
+                        <Typography className='font-semibold'>
+                            @{questionid}
+                        </Typography>
+                        <Typography className='font-semibold'>
                             {question}
                         </Typography>
-
-                        {qimage ? (
+                        {/* {qimage ? (
                             <div className="p-4">
                                 <img src={qimage} alt="question image" className="w-full h-auto rounded shadow-md" />
                             </div>
-                        ) : null}
-
+                        ) : null} */}
                     </CardBody>
                 </Card>
             </div>

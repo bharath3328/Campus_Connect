@@ -58,10 +58,10 @@ export const ViewAnswer = () => {
                         {answerObj.answer}
                         </p>
                     </p>
-                    <div className="flex item-center justify-center ">
+                    {/* <div className="flex item-center justify-center ">
                         <img src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-souvenirpixels-417074.jpg&fm=jpg" alt="no answer image "
                             className="h-full max-w-xl hover:scale-150 " />
-                    </div>
+                    </div> */}
                     <div className="mx-5 my-5 flex justify-between ">
                         {
                            answerObj.isVerified ===false && role === 'teacher' && <Button  onClick={()=>verify()}> verify </Button>

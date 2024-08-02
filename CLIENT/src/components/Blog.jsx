@@ -19,7 +19,7 @@ export function Blog({data}) {
     
     return (
         <Card className="max-w-[24rem] overflow-hidden">
-            <CardHeader
+            {/* <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
@@ -29,7 +29,7 @@ export function Blog({data}) {
                     src={data.image}
                     alt="blog-image"
                 />
-            </CardHeader>
+            </CardHeader> */}
             <CardBody>
                 <div className="md:flex-row md:items-center md:justify md:gap-3 flex-col gap-3">
                     <Typography variant="h4" color="blue-gray">
