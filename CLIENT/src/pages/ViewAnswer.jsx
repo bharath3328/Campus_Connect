@@ -10,7 +10,7 @@ export const ViewAnswer = () => {
     const [answer, setAnswer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    //  const role=useSelector(state=>state.authUser.user.userRole);
+     const role=useSelector(state=>state.authUser.user.userRole);
     useEffect(() => {
         const fetchData = async () => {
           try {
