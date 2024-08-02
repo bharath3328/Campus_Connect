@@ -3,9 +3,9 @@ const router=express.Router()
 const user=require('../models/userModel.js')
 const job=require('../models/jobsModel.js')
 //view 
-router.get('/getJobs/',async (req,res)=>{
+router.get('/getJobs',async (req,res)=>{
     
-    await job.find({}).then((result)=>{
+    await job.find().then((result)=>{
         res.status(200).send(result)
     })
 })
