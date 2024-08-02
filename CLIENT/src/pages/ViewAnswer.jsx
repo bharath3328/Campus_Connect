@@ -26,9 +26,11 @@ export const ViewAnswer = () => {
     }, []);
 
     const qnid = answerObj.q_id;
-    const verify =async () => {
-        const response = await axios.post(`/api/answers/isVerified/${qnid}`);
+    console.log(qnid);
+    const verify = async () => {
         console.log("verified");
+        const response = await axios.post(`/api/answers/isVerified/${qnid}`);
+        console.log(response.data);
     }
 
     if (error) return <p>Error: {error.message}</p>;
