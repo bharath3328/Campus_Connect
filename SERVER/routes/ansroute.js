@@ -40,7 +40,7 @@ routes.delete('/delete',async (req,res)=>{
 })
 routes.post('/isVerified/:id',async (req,res)=>{
     let {id}=req.params
-    await answer.findByIdAndUpdate(id,{
+    await answer.findOneAndUpdate({q_id:id},{
         isVerified:true
     })
     res.status(200)
