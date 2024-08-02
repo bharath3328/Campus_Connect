@@ -7,57 +7,57 @@ import {
 } from "@material-tailwind/react";
 
 import axios from "../axios";
-import { useParams } from 'react-router-dom'; 
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 export const Answer = () => {
-    
-    const {id} =useParams();
+
+    const { id } = useParams();
     const [answer, setAnswer] = useState('');
     const [image, setImage] = useState(null);
     const [qimage, setQImage] = useState(null);
     const [question, setQuestion] = useState(null);
     const [error, setError] = useState(null);
 
-    const navigate=useNavigate();
-    const userId=useSelector(state=>state.authUser.user._id);
-   
-    
+    const navigate = useNavigate();
+    const userId = useSelector(state => state.authUser.user._id);
+
+
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const response = await axios.get(`/api/questions/getQn/${id}`);  
-            setQuestion(response.data.question); 
-            {
-                response.data.image && setQImage(response.data.image)
+            try {
+                const response = await axios.get(`/api/questions/getQn/${id}`);
+                setQuestion(response.data.question);
+                {
+                    response.data.image && setQImage(response.data.image)
+                }
+            } catch (err) {
+                setError(err);
             }
-          } catch (err) {
-            setError(err); 
-          }
         };
-        fetchData(); 
-      }, []); 
-    
-    const handleSubmit =async (e) => {
+        fetchData();
+    }, []);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         const answerData = {
             answer: answer,
-            user_id:userId,
-            q_id:id
+            user_id: userId,
+            q_id: id
         }
         console.log(answerData);
-        try{
-            const response= await axios.post('/api/answers/new',answerData);
+        try {
+            const response = await axios.post('/api/answers/new', answerData);
             console.log(response.data);
             navigate(`/viewanswer/${id}`)
-        }catch(err){
+        } catch (err) {
             console.log(err.message);
         }
     };
-  
-    
+
+
     if (error) return <p>error </p>
     return (
         <>
@@ -67,11 +67,13 @@ export const Answer = () => {
                         <Typography>
                             {question}
                         </Typography>
-                        <Typography>
-                            {
-                                qimage && <img src={qimage} alt="question image" />
-                            } 
-                        </Typography>
+
+                        {
+                            qimage && <Typography>
+                                <img src={qimage} alt="question image" />
+                            </Typography>
+                        }
+
                     </CardBody>
                 </Card>
             </div>
@@ -86,7 +88,7 @@ export const Answer = () => {
                 </div>
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="file_input">Upload the answer image</label>
                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="file_input" type="file" accept="image/jpeg" onChange={(e)=>setImage(e.target.files[0])}></input >
+                    id="file_input" type="file" accept="image/jpeg" onChange={(e) => setImage(e.target.files[0])}></input >
 
                 <div className="flex items-center justify-center my-10">
                     <button
@@ -101,10 +103,10 @@ export const Answer = () => {
     );
 };
 
-//put the verify button for teachers 
+//put the verify button for teachers
 
 
-//send question id as the prop to display the question 
-//on submit - along with user id post 
+//send question id as the prop to display the question
+//on submit - along with user id post
 //redirect to view answer with  the answer which is posted
 //enable edit options 
