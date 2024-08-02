@@ -54,8 +54,8 @@ export function Signup() {
           <Input required label="Email" size="lg" onChange={(e) => setEmail(e.target.value)} />
           <Input required label="Password" type="password" size="lg" onChange={(e) => setPassword(e.target.value)} />
           <Input required label="Username" size="lg" onChange={(e) => setUsername(e.target.value)} />
-          <Input required label="USN" size="lg" onChange={(e) => setUsn(e.target.value)} />
-          <Input required type='number' min='1' max='8' label="Semester" size="lg" onChange={(e) => setSem(e.target.value)} />
+          <Input required label="USN (not for teachers)" size="lg" onChange={(e) => setUsn(e.target.value)} />
+          <Input required type='number ' min='1' max='8' label="Semester (not for teachers)" size="lg" onChange={(e) => setSem(e.target.value)} />
           <div className="w-auto">
             <select className="p-2 m-2" required name="who are you ?" onChange={(e)=>setRole(e.target.value)}>
             <option value="student">Student</option>

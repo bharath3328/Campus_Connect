@@ -42,7 +42,7 @@ export function Blog({data}) {
             </CardBody>
             <CardFooter className="flex items-center justify-between">
                 <Button onClick={()=>handleClick()}>view full blog</Button>
-                <Typography className="font-normal">blog-upload date</Typography>
+                {/* <Typography className="font-normal">blog-upload date</Typography> */}
             </CardFooter>
         </Card>
     );

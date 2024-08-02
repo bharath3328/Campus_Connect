@@ -1,6 +1,10 @@
 import { useState } from "react"
 import { Textarea } from "@material-tailwind/react";
-
+import axios from '../axios';
+import { useDispatch} from 'react-redux';
+import { useNotifications } from '../slices/notifications';
+import {notify} from '../slices/notificationSlice';
+import { useNavigate } from "react-router-dom";
 export const UploadBlog = () => {
     const [name, setName] = useState('');
     const [year, setYear] = useState('');
@@ -9,7 +13,10 @@ export const UploadBlog = () => {
     const [content, setContent] = useState('');
     const [headline, setHeadline] = useState('');
     const [image, setImage] = useState(null);
-    const handleSubmit=(e)=>{
+    const navigate=useNavigate();
+    useNotifications();
+    const dispatch=useDispatch();
+    const handleSubmit= async(e)=>{
         e.preventDefault();
         const blogData={
             name:name,
@@ -21,6 +28,15 @@ export const UploadBlog = () => {
             headline:headline,
         }
         console.log(blogData);
+        try{ 
+            const response = await axios.post('/api/blogs/newBlog',blogData);
+            dispatch(notify({message:'Blog Posted Successfully',type:'success'}));
+            navigate('/blogs');
+          }catch(err)
+          {
+            dispatch(notify({message:'error: Blog Not Posted ',type:'error'}));
+            navigate('/blogs');
+          }
     }
     return (
         <>
