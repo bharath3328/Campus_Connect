@@ -54,7 +54,7 @@ const JobUpload = () => {
             Job Link
           </label>
           <input
-            type="url"
+            type="text"
             id="jobLink"
             value={jobLink}
             onChange={(e) => setJobLink(e.target.value)}

@@ -38,7 +38,7 @@ const UploadHackathon = () => {
             Hackathon Date
           </label>
           <input
-            type="date"
+            type="string"
             id="hackathonDate"
             name="hackathonDate"
             value={date}
@@ -66,7 +66,7 @@ const UploadHackathon = () => {
             Registration Link
           </label>
           <input
-            type="url"
+            type="text"
             id="registrationLink"
             name="registrationLink"
             value={link}

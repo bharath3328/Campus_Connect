@@ -20,9 +20,9 @@ export const HackathonsComponent = ({ hackathons }) => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Hackathons</h2>
-      {/* {hackathons.map((hackathon, index) => (
+      {hackathons.map((hackathon, index) => (
          <HackathonCard key={index} data={hackathon} />
-      ))} */}
+      ))}
     </div>
   );
 };

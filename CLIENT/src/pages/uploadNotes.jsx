@@ -95,7 +95,7 @@ export const UploadNotes = () => {
           </label>
           <input
             required
-            type="url"
+            type="text"
             name="field2"
             id="field2"
             value={link}
