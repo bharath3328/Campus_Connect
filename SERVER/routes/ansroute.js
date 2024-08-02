@@ -14,7 +14,8 @@ const multer=require('multer')
      const ans=answer.find({q_id:req.body.q_id})
     
     const newq=await question.findByIdAndUpdate(req.body.q_id,{
-        answer:ans._id
+        answer:ans._id,
+        isanswered:true
     })
     console.log(newq)
     res.status(200).send(newq)
@@ -37,6 +38,13 @@ routes.delete('/delete',async (req,res)=>{
     await answer.findByIdAndDelete(ans_id)
     res.status(200).send("deletion successful")
 
+})
+routes.post('/isVerified/:id',async (req,res)=>{
+    let {id}=req.params
+    await answer.findByIdAndUpdate(id,{
+        isVerified:true
+    })
+    res.status(200)
 })
 
   
