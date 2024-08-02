@@ -3,7 +3,7 @@ const routes=express.Router()
 const hackathon=require('../models/hackathon.js')
 //get hackathon
 routes.get('/getHackathons',async (req,res)=>{
-    const result=hackathon.find()
+    const result=await hackathon.find()
     res.status(200).send(result)
 })
 //add hackathon
