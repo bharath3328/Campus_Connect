@@ -4,25 +4,13 @@ const user = require('../models/userModel.js')
 const schema=mongoose.Schema
 
 const b_schema=schema({
-    user_id:{
-        type:schema.Types.ObjectId,
-        ref:"user"
-    },
-    yearOfPass:{
-        type:Number,
-        
-    },
-    company:{
-        type:String,
-    },
-    salary:{
-        type:String
-    },
+    name:String,
+    year:String,
+    company:String,
+    salary:Number,
+    content:String,
     image:String,
-    experience:{
-        type:String,
-        
-    }
+    headline:String
 
 })
 module.exports=mongoose.model('blog',b_schema)
