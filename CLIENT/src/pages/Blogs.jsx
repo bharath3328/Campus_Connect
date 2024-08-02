@@ -14,7 +14,7 @@ const navigate =useNavigate();
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/api/blogs/viewBlogs'); 
+                const response = await axios.get('/api/blogs/viewBlogs');  
                 setData(response.data);
                 setLoading(false);
             } catch (err) {
@@ -25,6 +25,7 @@ const navigate =useNavigate();
 
         fetchData();
     }, []);
+
 
     if (error) return <p>Error: {error.message}</p>;
     if (loading) return <Loading />;
@@ -37,7 +38,7 @@ const navigate =useNavigate();
             <div className="flex items-center justify-center my-10">
                 <div className="grid md:grid-cols-2 gap-10 ">
                     {data.map((blog,index)=>{
-                        <Blog key={index} data={blog}/>
+                        return <Blog key={index} data={blog}/>
                     })} 
                 </div>
             </div>

@@ -8,7 +8,7 @@ export const UploadNotes = () => {
   const [subject, setSubject] = useState('');
   const [chapter, setChapter] = useState('');
   const [link, setLink] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('Notes');
   const [sem, setSem] = useState(1);
   useNotifications();
   const dispatch=useDispatch();
@@ -26,14 +26,14 @@ export const UploadNotes = () => {
     try{
       const response = await axios.post('/api/notes/uploadNotes',notesData);
       dispatch(notify({message:'Material Uploaded Successfully',type:'success'}));
-      navigate('/notes');
+      navigate('/viewnotes');
     }catch(err)
     {
       dispatch(notify({message:'error: please try again',type:'error'}));
-      navigate('/notes');
+      navigate('/viewnotes');
     }
   }
-
+ 
   
   return (
     <>
@@ -71,8 +71,8 @@ export const UploadNotes = () => {
             className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           >
-            <option value="notes">Notes</option>
-            <option value="textbook">Textbook</option>
+            <option value="Notes">Notes</option>
+            <option value="Textbook">Textbook</option> 
           </select>
         </div>
         <div className="mb-4">
@@ -85,6 +85,7 @@ export const UploadNotes = () => {
             name="field2"
             id="field2"
             defaultValue={sem}
+            onChange={(e) => setSem(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
@@ -94,7 +95,7 @@ export const UploadNotes = () => {
           </label>
           <input
             required
-            type="text"
+            type="url"
             name="field2"
             id="field2"
             value={link}

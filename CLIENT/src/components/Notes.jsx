@@ -1,22 +1,12 @@
-export const Notes=()=>{
-    //get data from the axios request
-    const data={
-        subject:"ada",
-        chapter:"brute force",
-        type:"notes",
-        link:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fbeautiful%2520nature%2F&psig=AOvVaw1rnQd2V_f2m9gMpICD_2Gs&ust=1719197310267000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCE_pnb8IYDFQAAAAAdAAAAABAE"
-    }
+export const Notes=({data})=>{
     return(
         <>
-        <div className="w-48 h-32 bg-gray-300 rounded drop-shadow-md text-center m-3 p-4 " >
-            <h4>{data.subject}</h4>
-            <a href={data.link}>{data.chapter}</a>
-            <h4 onClick={()=>handleClick()} className="hover:underline"></h4>
+        <div className=" border border-black shadow-md w-48 h-32 bg-white-300 rounded drop-shadow-md text-center m-3 p-4 " >
+            <h4>Subject: {data.subject}</h4>
+            <a href="https://drive.google.com/drive/folders/1URjHBQ9JqxqpyWykNPbUqiSNWE1OReBb?usp=sharing" className="hover:underline" > Chapter: {data.chapter}</a>
             <h4>{data.type}</h4>
+            <h4>Semester: {data.sem}</h4>
         </div>
         </>
     )
 }
-
-// {data}
-//get data as prop 

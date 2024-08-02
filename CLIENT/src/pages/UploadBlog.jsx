@@ -25,7 +25,7 @@ export const UploadBlog = () => {
             salary:salary,
             content:content,
             image:image,
-            headline:headline,
+            headline:headline, 
         }
         console.log(blogData);
         try{ 

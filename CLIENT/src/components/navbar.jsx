@@ -36,7 +36,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button className="bg-custom-blue" onClick={()=>navigate('/notes')}>Lecture Materials</Button>
+        <Button className="bg-custom-blue" onClick={()=>navigate('/viewnotes')}>Lecture Materials</Button>
       </Typography>
       <Typography
         as="li"
@@ -44,7 +44,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Button className="bg-custom-blue" onClick={()=>navigate()}>Jobs</Button>
+        <Button className="bg-custom-blue" onClick={()=>navigate('/jobs')}>Jobs & Hackathons</Button>
       </Typography>
       <Typography
         as="li"

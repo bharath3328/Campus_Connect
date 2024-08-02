@@ -20,7 +20,8 @@ import { BlogPage } from './pages/viewBLog';
 import { JobsAndHackathons } from './pages/Jobs_hackathons';
 import ProtectedRoute from './ProtectedRoute';
 import { NotAuthorized } from './components/NotAuth';
-
+import UploadHackathon from './pages/uploadHackathon';
+import JobUpload from './pages/uploadjob';
 function App() {
   const location = useLocation();
   const hideNavbarAndFooter = location.pathname === '/';
@@ -46,7 +47,9 @@ function App() {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/uploadblogs" element={<ProtectedRoute element={<UploadBlog />} allowedRoles={['alumni']} />} />
               <Route path="/viewblog/:id" element={<BlogPage />} allowedRoles={['teacher', 'student','alumni']}/>
-              <Route path="/jobs" element={<ProtectedRoute element={<JobsAndHackathons />} allowedRoles={['admin', 'user','alumni']} />} />
+              <Route path="/jobs" element={<ProtectedRoute element={<JobsAndHackathons />} allowedRoles={['teacher', 'student','alumni']} />} />
+              <Route path="/uploadhackathon" element={<ProtectedRoute element={<UploadHackathon />} allowedRoles={['teacher', 'student','alumni']} />} />
+              <Route path="/uploadjob" element={<ProtectedRoute element={<JobUpload />} allowedRoles={['teacher', 'student','alumni']} />} />
             </Routes>
           </CSSTransition>
         </TransitionGroup>

@@ -62,13 +62,13 @@ export const Home = () => {
             <button onClick={() => navigate('/questions')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               QNA 
             </button>
-            <button onClick={() => navigate('/notes')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
+            <button onClick={() => navigate('/viewnotes')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               Materials
             </button>
             <button onClick={() => navigate('/blogs')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               Placement Blogs
             </button>
-            <button onClick={() => navigate('/')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
+            <button onClick={() => navigate('/jobs')} className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105 hover:bg-custom-blue hover:text-white">
               Jobs & Hackathons
             </button>
           </div>

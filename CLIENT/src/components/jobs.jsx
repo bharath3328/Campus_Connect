@@ -14,15 +14,15 @@ const JobCard = ({ userId, jobRole, jobLink }) => {
   );
 };
 
- const JobsComponent = ({ jobs }) => {
+ export const JobsComponent = ({ jobs }) => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Jobs</h2>
-      {jobs.map((job, index) => (
+      {/* {jobs.map((job, index) => (
         <JobCard key={index} userId={job.userId} jobRole={job.jobRole} jobLink={job.jobLink} />
-      ))}
+      ))} */}
     </div>
   );
 };
-
-export  default JobsComponent;
+ 
+// export  default JobsComponent; 

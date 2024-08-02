@@ -4,12 +4,13 @@ import React from 'react';
 import { useEffect,useState } from 'react';
 import { Loading } from '../components/Loading';
 import axios from '../axios';
+import {useParams} from 'react-router-dom';
 export const BlogPage = () => {
   
   const {id}=useParams();
     const [blog, setblog] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null); 
      
     useEffect(() => {
         const fetchData = async () => {
