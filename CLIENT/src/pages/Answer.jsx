@@ -21,8 +21,7 @@ export const Answer = () => {
     const [error, setError] = useState(null);
 
     const navigate=useNavigate();
-    // const userId=useSelector(state=>state.authIser.user._id);
-    const user_id='66abbef3304da0865ad556cf';
+    const userId=useSelector(state=>state.authUser.user._id);
    
     
     useEffect(() => {
@@ -45,8 +44,7 @@ export const Answer = () => {
     
         const answerData = {
             answer: answer,
-            
-            user_id:user_id,
+            user_id:userId,
             q_id:id
         }
         console.log(answerData);
