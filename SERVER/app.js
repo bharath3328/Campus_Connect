@@ -9,6 +9,7 @@ const ansroute=require('./routes/ansroute.js')
 const notesRoute=require('./routes/notesRoute')
 const jobroute=require('./routes/jobroute.js')
 const blogroute=require('./routes/blogroute.js')
+const hackathonRoute=require('./routes/hackathonRoute')
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
@@ -54,7 +55,7 @@ app.use('/api/blogs',blogroute)
 //job route
 app.use('/api/jobs',jobroute)
 app.use('/api/notes',notesRoute)
-
+app.use('/api/hackathons',hackathonRoute)
 const userRoute = require('./routes/userRoute');
 app.use('/api/user', userRoute);
 
