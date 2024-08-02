@@ -5,9 +5,9 @@ const job=require('../models/jobsModel.js')
 //view 
 router.get('/getJobs',async (req,res)=>{
     
-    await job.find().then((result)=>{
-        res.status(200).send(result)
-    })
+   const result= await job.find()
+   res.status(200).send(result)
+    
 })
 //add 
 router.post('/new',async (req,res)=>{
