@@ -11,6 +11,10 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+import { useNotifications } from '../slices/notifications';
+import {notify} from '../slices/notificationSlice';
+
 export const Answer = () => {
 
     const { id } = useParams();
@@ -24,6 +28,8 @@ export const Answer = () => {
     const userId = useSelector(state => state.authUser.user._id);
     const username = useSelector(state => state.authUser.user.name);
 
+    useNotifications();
+    const dispatch=useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,9 +57,10 @@ export const Answer = () => {
         }
         try {
             const response = await axios.post('/api/answers/new', answerData);
+            dispatch(notify({message:'Answer Posted Successfully',type:'success'}));
             navigate(`/viewanswer/${id}`)
         } catch (err) {
-            console.log(err.message);
+            dispatch(notify({message:'Error: Please try again',type:'success'}));
         }
     };
 

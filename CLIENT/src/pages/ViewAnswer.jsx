@@ -36,10 +36,8 @@ export const ViewAnswer = () => {
     }
 
     const qnid = answerObj.q_id;
-    console.log(qnid);
     const verify = async () => {
         const response = await axios.post(`/api/answers/isVerified/${qnid}`);
-        console.log(response.data);
     }
 
     return (

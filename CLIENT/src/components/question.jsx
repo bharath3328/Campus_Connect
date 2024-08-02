@@ -16,15 +16,11 @@ export function Question({data}) {
   const role = useSelector(state=>state.authUser.user.userRole);
   
   const isAnswered =data.isanswered;
-  const isVerified =data.isVerified;
   const qid=data._id;
   
   return (
     <Card className="mt-6 w-96">
       <CardBody>
-      {isVerified === true && (
-          <Button color="white" className="text-green-500">verified</Button>
-        )}
         <Typography variant="h5" color="blue-gray" className="mb-2">
           @{data.username}
         </Typography>
