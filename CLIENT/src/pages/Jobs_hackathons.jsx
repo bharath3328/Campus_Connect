@@ -16,7 +16,7 @@ import { Button } from "@material-tailwind/react";
 import { useEffect, useState } from 'react';
 import { Loading } from '../components/Loading';
 import {useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../axios';
 export const JobsAndHackathons = () => {
 
     const [jobs, setJobs] = useState(null);
@@ -27,12 +27,12 @@ export const JobsAndHackathons = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response1 = await axios.get('/api/jobs/getJobs'); 
-                setJobs(response1.data);
-                console.log(response1.data);
-                // const response2 = await axios.get('/api/hackathons/getHackatons');
-                // console.log(response2.data);
-                // setHackathons(response2.data);
+                // const response1 = await axios.get('/api/jobs/getJobs'); 
+                // setJobs(response1.data);
+                // console.log(response1);
+                const response2 = await axios.get('/api/hackathons/getHackathons');
+                console.log(response2);
+                setHackathons(response2.data);
                 setLoading(false);
                 
             } catch (err) { 
