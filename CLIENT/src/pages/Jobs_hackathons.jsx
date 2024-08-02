@@ -27,12 +27,12 @@ export const JobsAndHackathons = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response1 = await axios.get('/api/jobs/getJobs');
+                const response1 = await axios.get('/api/jobs/getJobs'); 
                 setJobs(response1.data);
                 console.log(response1.data);
-                const response2 = await axios.get('/api/hackathons/getHackatons');
-                console.log(response2.data);
-                setHackathons(response2.data);
+                // const response2 = await axios.get('/api/hackathons/getHackatons');
+                // console.log(response2.data);
+                // setHackathons(response2.data);
                 setLoading(false);
                 
             } catch (err) { 
