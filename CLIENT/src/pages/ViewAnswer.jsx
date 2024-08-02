@@ -16,6 +16,7 @@ export const ViewAnswer = () => {
             try {
                 const response = await axios.get(`/api/answers/getAns/${id}`);
                 setAnswer(response.data);
+                console.log(response.data);
                 setLoading(false);
             } catch (err) {
                 setError(err);
@@ -28,7 +29,6 @@ export const ViewAnswer = () => {
     const qnid = answerObj.q_id;
     console.log(qnid);
     const verify = async () => {
-        console.log("verified");
         const response = await axios.post(`/api/answers/isVerified/${qnid}`);
         console.log(response.data);
     }
@@ -64,7 +64,7 @@ export const ViewAnswer = () => {
                             <Button>delete </Button>
                         </div> */}
                         {
-                            role === 'teacher' && <Button onClick={()=>verify()}> verify </Button>
+                            role === 'teacher' && <Button onClick={()=>verify()} > verify </Button>
                         }
                     </div>
                 </div>
@@ -79,3 +79,7 @@ export const ViewAnswer = () => {
 
 
 //add edit and delete options later 
+
+// ()=>verify()
+
+// 
