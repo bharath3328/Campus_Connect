@@ -43,7 +43,7 @@ routes.post('/isVerified/:id',async (req,res)=>{
     await answer.findOneAndUpdate({q_id:id},{
         isVerified:true
     })
-    res.status(200)
+    res.status(200).send('verified')
 })
 
   
