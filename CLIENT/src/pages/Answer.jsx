@@ -47,12 +47,10 @@ export const Answer = () => {
             answer: answer,
             user_id: userId,
             q_id: id,
-            username:username,
+            username: username,
         }
-        console.log(answerData);
         try {
             const response = await axios.post('/api/answers/new', answerData);
-            console.log(response.data);
             navigate(`/viewanswer/${id}`)
         } catch (err) {
             console.log(err.message);
@@ -70,12 +68,11 @@ export const Answer = () => {
                             {question}
                         </Typography>
 
-                        {
-                            qimage &&
-                            <Typography>
-                                <img src={qimage} alt="question image" />
-                            </Typography>
-                        }
+                        {qimage ? (
+                            <div className="p-4">
+                                <img src={qimage} alt="question image" className="w-full h-auto rounded shadow-md" />
+                            </div>
+                        ) : null}
 
                     </CardBody>
                 </Card>

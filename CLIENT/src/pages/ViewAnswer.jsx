@@ -4,31 +4,36 @@ import { Loading } from '../components/Loading';
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from '../axios';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 export const ViewAnswer = () => {
-    const {id}=useParams();
-    const [answer, setAnswer] = useState(null);
+    const { id } = useParams();
+    const [answerObj, setAnswer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-     const role=useSelector(state=>state.authUser.user.userRole);
+    const role = useSelector(state => state.authUser.user.userRole);
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const response = await axios.get(`/api/answers/getAns/${id}`); 
-            console.log(response.data);
-            setAnswer(response.data); 
-            setLoading(false); 
-          } catch (err) {
-            setError(err); 
-            setLoading(false); 
-          }
+            try {
+                const response = await axios.get(`/api/answers/getAns/${id}`);
+                setAnswer(response.data);
+                setLoading(false);
+            } catch (err) {
+                setError(err);
+                setLoading(false);
+            }
         };
-        fetchData(); 
-      }, []); 
-    
+        fetchData();
+    }, []);
+
+    const qnid = answerObj.q_id;
+    const verify =async () => {
+        const response = await axios.post(`/api/answers/isVerified/${qnid}`);
+        console.log("verified");
+    }
+
     if (error) return <p>Error: {error.message}</p>;
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
     return (
         <>
@@ -57,8 +62,8 @@ export const ViewAnswer = () => {
                             <Button>delete </Button>
                         </div> */}
                         {
-                            role==='teacher' && <Button> verify </Button>
-                        } 
+                            role === 'teacher' && <Button onClick={()=>verify()}> verify </Button>
+                        }
                     </div>
                 </div>
             </div>
