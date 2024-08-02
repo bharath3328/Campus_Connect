@@ -15,6 +15,7 @@ export const ViewAnswer = () => {
         const fetchData = async () => {
           try {
             const response = await axios.get(`/api/answers/getAns/${id}`); 
+            console.log(response.data);
             setAnswer(response.data); 
             setLoading(false); 
           } catch (err) {

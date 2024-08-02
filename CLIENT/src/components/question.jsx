@@ -26,7 +26,10 @@ export function Question({data}) {
           <Button color="white" className="text-green-500">verified</Button>
         )}
         <Typography variant="h5" color="blue-gray" className="mb-2">
-          {data.username}
+          @{data.username}
+        </Typography>
+        <Typography variant="h6" color="blue-gray">
+          Subject: {data.subject}
         </Typography>
         <Typography>
           {data.question}
