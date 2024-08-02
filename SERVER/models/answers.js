@@ -11,6 +11,9 @@ const ans_schema=schema({
         type:String,
         require
     },
+    username:{
+        type:String
+    },
     image:{
         type:schema.Types.Mixed
     },
