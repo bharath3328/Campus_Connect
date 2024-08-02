@@ -16,7 +16,7 @@ import { Button } from "@material-tailwind/react";
 import { useEffect, useState } from 'react';
 import { Loading } from '../components/Loading';
 import {useNavigate } from 'react-router-dom';
-import axios from '../axios';
+import axios from "../axios";
 export const JobsAndHackathons = () => {
 
     const [jobs, setJobs] = useState(null);
@@ -43,6 +43,7 @@ export const JobsAndHackathons = () => {
 
         fetchData(); 
     }, []);
+    
     const navigate=useNavigate();
     if (error) return <p>Error: {error.message}</p>;
     if (loading) return <Loading />;
@@ -57,7 +58,7 @@ export const JobsAndHackathons = () => {
             <div className="container mx-auto p-4">
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-3/4">
-                        <JobsComponent jobs={jobs} />
+                        {/* <JobsComponent jobs={jobs} /> */}
                     </div>
                     <div className="w-full lg:w-3/4 lg:ml-4">
                         <HackathonsComponent hackathons={hackathons} />

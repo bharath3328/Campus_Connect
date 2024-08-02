@@ -16,7 +16,7 @@ export function Blog({data}) {
     const handleClick=()=>{
          navigate(`/viewblog/${data._id}`)
     }
-    console.log(data);
+    
     return (
         <Card className="max-w-[24rem] overflow-hidden">
             <CardHeader

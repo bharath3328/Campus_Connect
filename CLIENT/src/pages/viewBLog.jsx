@@ -1,36 +1,36 @@
 import React from 'react';
 
 
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Loading } from '../components/Loading';
 import axios from '../axios';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 export const BlogPage = () => {
-  
-  const {id}=useParams();
-    const [blog, setblog] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null); 
-     
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get(`/api/blog/getBlog/${id}`); 
-            setblog(response.data); 
-            setLoading(false); 
-          } catch (err) {
-            setError(err); 
-            setLoading(false); 
-          }
-        };
-        fetchData(); 
-      }, []); 
-    
-    if (error) return <p>Error: {error.message}</p>;
-    if(loading){
-        return <Loading/>
-    }
-  
+
+  const { id } = useParams();
+  const [blog, setblog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/blogs/getBlog/${id}`); 
+        setblog(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (error) return <p>Error: {error.message}</p>;
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="mt-4 text-gray-700 leading-relaxed">
