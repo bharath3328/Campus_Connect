@@ -69,7 +69,8 @@ export const Answer = () => {
                         </Typography>
 
                         {
-                            qimage && <Typography>
+                            qimage &&
+                            <Typography>
                                 <img src={qimage} alt="question image" />
                             </Typography>
                         }
