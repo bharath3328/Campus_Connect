@@ -22,7 +22,8 @@ export const Answer = () => {
 
     const navigate=useNavigate();
     // const userId=useSelector(state=>state.authIser.user._id);
-    const userId=12345;
+    const user_id='66abbef3304da0865ad556cf';
+   
     
     useEffect(() => {
         const fetchData = async () => {
@@ -41,16 +42,15 @@ export const Answer = () => {
     
     const handleSubmit =async (e) => {
         e.preventDefault();
+    
         const answerData = {
             answer: answer,
-            image:JSON.stringify({
-                base64:image
-              }),
-            userId:userId,
+            
+            user_id:user_id,
+            q_id:id
         }
         console.log(answerData);
         try{
-            
             const response= await axios.post('/api/answers/new',answerData);
             console.log(response.data);
             navigate(`/viewanswer/${id}`)
@@ -58,6 +58,7 @@ export const Answer = () => {
             console.log(err.message);
         }
     };
+  
     
     if (error) return <p>error </p>
     return (
@@ -85,9 +86,9 @@ export const Answer = () => {
                         <Textarea rows={10} cols={10} onChange={(e) => setAnswer(e.target.value)} />
                     </div>
                 </div>
-                <label className="block text-gray-700 text-sm font-bold mb-2" for="file_input">Upload the answer image</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="file_input">Upload the answer image</label>
                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="file_input" type="file" accept="image/jpeg" onChange={(e) => setImage(e.target.files[0])}></input >
+                    id="file_input" type="file" accept="image/jpeg" onChange={(e)=>setImage(e.target.files[0])}></input >
 
                 <div className="flex items-center justify-center my-10">
                     <button
