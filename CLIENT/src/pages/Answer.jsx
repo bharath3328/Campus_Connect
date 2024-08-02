@@ -22,7 +22,7 @@ export const Answer = () => {
 
     const navigate=useNavigate();
     // const userId=useSelector(state=>state.authIser.user._id);
-    const user_id='66abbef3304da0865ad556cf';
+    const user_id=;
    
     
     useEffect(() => {
