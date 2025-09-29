@@ -27,7 +27,7 @@ routes.get('/getAns/:id',async (req,res)=>{
         res.status(200).send(result)
     })
 })
-//delete answer
+//delete answer will not be displayed on the question page
 routes.delete('/delete',async (req,res)=>{
     
     let {q_id,ans_id}=req.body
